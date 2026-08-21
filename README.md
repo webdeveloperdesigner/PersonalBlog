@@ -18,8 +18,9 @@
 
 ---
 
-![GitHub last commit](https://img.shields.io/github/last-commit/webdeveloperdesigner/v2-portfolio?style=flat-square&color=6366f1)
-![GitHub repo size](https://img.shields.io/github/repo-size/webdeveloperdesigner/v2-portfolio?style=flat-square&color=a855f7)
+![GitHub last commit](https://img.shields.io/github/last-commit/webdeveloperdesigner/PersonalBlog?style=flat-square&color=6366f1)
+![GitHub repo size](https://img.shields.io/github/repo-size/webdeveloperdesigner/PersonalBlog?style=flat-square&color=a855f7)
+![GitHub stars](https://img.shields.io/github/stars/webdeveloperdesigner/PersonalBlog?style=flat-square&color=f59e0b)
 ![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
 
 </div>
@@ -122,8 +123,8 @@ Includes a contact form with floating labels (`peer-[:not(:placeholder-shown)]:-
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/webdeveloperdesigner/v2-portfolio.git
-   cd v2-portfolio
+   git clone https://github.com/webdeveloperdesigner/PersonalBlog.git
+   cd PersonalBlog
    ```
 
 2. **Install dependencies:**
