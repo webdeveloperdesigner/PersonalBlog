@@ -1,17 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, AlertCircle, X, Mail, MessageSquare } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
     setTimeout(() => {
       setFormStatus('success');
-    }, 1400);
+      setShowToast(true);
+    }, 1000);
   };
 
   return (
@@ -74,8 +78,8 @@ export default function Contact() {
               </div>
 
               <div className="pt-4">
-                <MagneticButton className={"w-full md:w-auto bg-[#FF7029] hover:bg-[#E65F1E] text-white font-black text-xs px-8 py-3.5 rounded-full uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#FF7029]/30 " + (formStatus === 'success' ? '!bg-green-600 !text-white' : '')}>
-                  <span className="text-white font-bold">{formStatus === 'idle' ? 'Send Message ↗' : formStatus === 'submitting' ? 'Sending...' : 'Message Sent ✓'}</span>
+                <MagneticButton className="w-full md:w-auto bg-[#FF7029] hover:bg-[#E65F1E] text-white font-black text-xs px-8 py-3.5 rounded-full uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#FF7029]/30">
+                  <span className="text-white font-bold">{formStatus === 'idle' ? 'Send Message ↗' : formStatus === 'submitting' ? 'Processing...' : 'Form Updating ↗'}</span>
                 </MagneticButton>
               </div>
             </form>
@@ -118,6 +122,56 @@ export default function Contact() {
 
         </div>
       </div>
+
+      {/* Interactive Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-8 right-8 z-[999] max-w-md w-full bg-white dark:bg-[#121212] border border-black/15 dark:border-white/15 rounded-2xl shadow-2xl p-6 flex flex-col gap-4 font-mono text-xs"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-2 text-[#FF7029] font-bold text-sm">
+                <AlertCircle className="w-5 h-5 text-[#FF7029] shrink-0 animate-pulse" />
+                <span>Form Service Notice</span>
+              </div>
+              <button
+                suppressHydrationWarning
+                onClick={() => setShowToast(false)}
+                className="text-foreground/50 hover:text-foreground p-1 transition-colors cursor-pointer rounded-full hover:bg-foreground/10"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <p className="font-sans text-xs text-foreground/80 leading-relaxed font-medium">
+              The automated contact form is currently undergoing live service updates. Please reach out directly via email or WhatsApp below for an instant response:
+            </p>
+
+            <div className="flex flex-col gap-2 pt-2 border-t border-black/10 dark:border-white/10 font-mono text-[11px]">
+              <a 
+                href="mailto:vivekxdev01@gmail.com" 
+                className="flex items-center gap-2 text-[#FF7029] hover:underline font-bold"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>vivekxdev01@gmail.com</span>
+              </a>
+              <a 
+                href="https://wa.me/918765728985" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 text-emerald-500 hover:underline font-bold"
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                <span>WhatsApp: +91 8765728985</span>
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

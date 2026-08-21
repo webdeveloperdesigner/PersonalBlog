@@ -1,12 +1,33 @@
 import Footer from "@/components/Footer";
 
 const allProjects = [
-  { id: "01", year: "2025", category: "AI/EdTech", title: "BodhAI", desc: "AI-powered learning practice platform with smart MCQs and coding quizzes", tags: ["React", "Firebase", "Tailwind"], url: "#" },
-  { id: "02", year: "2024", category: "Healthcare", title: "AI Chatbot", desc: "Healthcare chatbot website for user-friendly medical assistance", tags: ["React", "JavaScript", "AI"], url: "#" },
-  { id: "03", year: "2024", category: "Personal", title: "Forge", desc: "Digital forge platform", tags: ["Next.js", "Three.js"], url: "https://forge-pink-seven.vercel.app/" },
-  { id: "04", year: "2024", category: "Personal", title: "LawLab", desc: "Legal management lab", tags: ["React", "Tailwind"], url: "https://lawlab-self.vercel.app/" },
-  { id: "05", year: "2025", category: "GenAI", title: "ResumeIQ", desc: "AI-powered resume builder", tags: ["OpenAI", "Next.js"], url: "https://resumeiq-harsh.vercel.app/" },
-  { id: "06", year: "2025", category: "Design", title: "Notch", desc: "Notch design system", tags: ["Figma", "Design"], url: "https://notch-zeta.vercel.app/" }
+  { 
+    id: "01", 
+    year: "2025", 
+    category: "AI / EdTech", 
+    title: "BodhAI", 
+    desc: "AI-powered learning practice platform with smart MCQs and coding quizzes", 
+    tags: ["React", "Firebase", "Tailwind", "AI"], 
+    url: "https://github.com/webdeveloperdesigner/BodhAI" 
+  },
+  { 
+    id: "02", 
+    year: "2024", 
+    category: "Healthcare / AI", 
+    title: "AI Healthcare Chatbot", 
+    desc: "Healthcare chatbot website for user-friendly medical assistance and diagnosis", 
+    tags: ["React", "JavaScript", "AI", "Node.js"], 
+    url: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-" 
+  },
+  { 
+    id: "03", 
+    year: "2026", 
+    category: "GenAI / EdTech", 
+    title: "Veda Resume", 
+    desc: "AI-powered smart resume builder, ATS analyzer, and optimization engine", 
+    tags: ["Next.js", "TypeScript", "Tailwind", "AI"], 
+    url: "https://github.com/webdeveloperdesigner/veda-resume" 
+  },
 ];
 
 export default function ProjectsArchive() {

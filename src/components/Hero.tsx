@@ -69,7 +69,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative bg-background min-h-screen pt-28 pb-0 overflow-hidden flex flex-col selection:bg-primary/30 selection:text-primary">
+    <section id="hero" className="relative bg-background min-h-screen pt-44 pb-0 overflow-hidden flex flex-col selection:bg-primary/30 selection:text-primary">
       
       {/* Background Grid Pattern */}
       <div 
@@ -85,7 +85,7 @@ export default function Hero() {
         {/* Top Header Row */}
         <div className="flex justify-between items-center border-b border-foreground/10 pb-4 w-full mb-12">
           <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-foreground/50 font-medium">
-            VIVEK . PORTFOLIO '24
+            VIVEK . PORTFOLIO '26
           </div>
           <div className="flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-foreground/50 font-medium">
             <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse" />
@@ -206,14 +206,14 @@ export default function Hero() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Link href="/projects" className="flex items-center gap-2 bg-foreground text-background font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-gray-300 transition-colors group">
+              <Link href="/#projects" className="flex items-center gap-2 bg-foreground text-background font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-gray-300 transition-colors group">
                 VIEW MY WORK 
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/contact" className="flex items-center gap-2 border border-foreground/20 text-foreground font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-foreground/5 transition-colors">
+              <Link href="/#contact" className="flex items-center gap-2 border border-foreground/20 text-foreground font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-foreground/5 transition-colors">
                 LET'S TALK
               </Link>
-              <a href="/cv.pdf" target="_blank" className="flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors ml-4 font-mono text-xs uppercase tracking-widest font-bold">
+              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors ml-4 font-mono text-xs uppercase tracking-widest font-bold">
                 <Download className="w-4 h-4" /> CV
               </a>
             </div>
@@ -245,8 +245,8 @@ export default function Hero() {
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <a href="#" className="hover:text-primary transition-colors"><GithubIcon className="w-4 h-4" /></a>
-                <a href="#" className="hover:text-primary transition-colors"><LinkedinIcon className="w-4 h-4" /></a>
+                <a href="https://github.com/webdeveloperdesigner" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors" aria-label="GitHub"><GithubIcon className="w-4 h-4" /></a>
+                <a href="https://linkedin.com/in/vivek-vns" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors" aria-label="LinkedIn"><LinkedinIcon className="w-4 h-4" /></a>
               </div>
             </div>
 

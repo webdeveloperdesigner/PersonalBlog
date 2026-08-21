@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs text-foreground/50 border-t border-foreground/10 pt-8">
-          <p>© 2024 VK . All rights reserved</p>
+          <p>© {new Date().getFullYear()} Vivek. All rights reserved</p>
           <div className="flex gap-6">
             <a href="/sitemap" className="hover:text-primary transition-colors">Sitemap</a>
             <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>

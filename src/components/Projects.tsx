@@ -12,11 +12,39 @@ if (typeof window !== 'undefined') {
 }
 
 const projects = [
-  { id: "01/05", year: "2025", category: "AI/EdTech", title: "BodhAI", desc: "AI-powered learning practice platform with smart MCQs and coding quizzes", tags: ["React", "Firebase", "Tailwind"], url: "#", pattern: "grid", color: "#FF7029" },
-  { id: "02/05", year: "2024", category: "Healthcare", title: "AI Chatbot", desc: "Healthcare chatbot website for user-friendly medical assistance", tags: ["React", "JavaScript", "AI"], url: "#", pattern: "circles", color: "#f0f0f0" },
-  { id: "03/05", year: "2024", category: "SaaS", title: "Sovereign Dashboard", desc: "Premium admin console and analytics dashboard with real-time syncing", tags: ["Next.js", "TypeScript", "GSAP"], url: "#", pattern: "lines", color: "#FF7029" },
-  { id: "04/05", year: "2023", category: "FinTech", title: "Crypto Wallet", desc: "Secure digital asset management interface with live market data tracking", tags: ["React Native", "Expo", "Web3"], url: "#", pattern: "grid", color: "#f0f0f0" },
-  { id: "05/05", year: "2023", category: "E-Commerce", title: "Aura Store", desc: "High-conversion modern storefront with dynamic cart and sleek animations", tags: ["Next.js", "Stripe", "Framer"], url: "#", pattern: "circles", color: "#FF7029" },
+  { 
+    id: "01/03", 
+    year: "2025", 
+    category: "AI / EdTech", 
+    title: "BodhAI", 
+    desc: "AI-powered learning practice platform with smart MCQs and coding quizzes", 
+    tags: ["React", "Firebase", "Tailwind", "AI"], 
+    url: "https://github.com/webdeveloperdesigner/BodhAI", 
+    pattern: "grid", 
+    color: "#FF7029" 
+  },
+  { 
+    id: "02/03", 
+    year: "2024", 
+    category: "Healthcare / AI", 
+    title: "AI Healthcare Chatbot", 
+    desc: "Healthcare chatbot website for user-friendly medical assistance and diagnosis", 
+    tags: ["React", "JavaScript", "AI", "Node.js"], 
+    url: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-", 
+    pattern: "circles", 
+    color: "#38bdf8" 
+  },
+  { 
+    id: "03/03", 
+    year: "2026", 
+    category: "GenAI / EdTech", 
+    title: "Veda Resume", 
+    desc: "AI-powered smart resume builder, ATS analyzer, and optimization engine", 
+    tags: ["Next.js", "TypeScript", "Tailwind", "AI"], 
+    url: "https://github.com/webdeveloperdesigner/veda-resume", 
+    pattern: "lines", 
+    color: "#a855f7" 
+  },
 ];
 
 export default function Projects() {

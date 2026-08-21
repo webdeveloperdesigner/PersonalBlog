@@ -6,7 +6,8 @@ import MagneticButton from './MagneticButton';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2 } from 'lucide-react';
+import NoticeBanner from './NoticeBanner';
+import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit } from 'lucide-react';
 
 const navLinks = [
   { name: '1.0 HOME', href: '/' },
@@ -22,6 +23,7 @@ const exploreItems = [
   { name: 'Career Timeline', desc: 'Milestones & professional growth', href: '/timeline', icon: <Layers className="w-4 h-4 text-emerald-400" /> },
   { name: 'About Presentation', desc: 'Interactive pitch & deck', href: '/me', icon: <UserCheck className="w-4 h-4 text-blue-400" /> },
   { name: 'Projects Archive', desc: 'Full repository of web & mobile apps', href: '/projects', icon: <FileCode2 className="w-4 h-4 text-primary" /> },
+  { name: 'System Changelog', desc: 'Version history & feature updates', href: '/changelog', icon: <GitCommit className="w-4 h-4 text-cyan-400" /> },
 ];
 
 export default function Navbar() {
@@ -82,14 +84,21 @@ export default function Navbar() {
         }}
         animate={hidden ? 'hidden' : 'visible'}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
-        className="fixed top-6 left-0 w-full px-6 md:px-12 xl:px-16 z-[60] flex items-center justify-between pointer-events-none"
+        className="fixed top-0 left-0 w-full z-[60] flex flex-col pointer-events-none"
       >
-        {/* Left: Logo */}
-        <div className={`pointer-events-auto transition-opacity duration-500 ${compact ? 'opacity-0' : 'opacity-100'}`}>
-          <Link href="/" className="font-sans font-black text-2xl text-foreground tracking-tighter hover:text-primary transition-colors">
-            VIVEK
-          </Link>
+        {/* Notice Banner */}
+        <div className="pointer-events-auto w-full">
+          <NoticeBanner />
         </div>
+
+        {/* Main Navbar Bar */}
+        <div className="w-full px-6 md:px-12 xl:px-16 pt-3 pb-2 flex items-center justify-between pointer-events-none">
+          {/* Left: Logo */}
+          <div className={`pointer-events-auto transition-opacity duration-500 ${compact ? 'opacity-0' : 'opacity-100'}`}>
+            <Link href="/" className="font-sans font-black text-2xl text-foreground tracking-tighter hover:text-primary transition-colors">
+              VIVEK
+            </Link>
+          </div>
 
         {/* Center: Navigation Pill */}
         <div className={`pointer-events-auto hidden lg:flex items-center backdrop-blur-xl border border-foreground/15 rounded-full p-1.5 pl-8 shadow-2xl transition-all duration-500 bg-background/90 text-foreground ${isMobileMenuOpen ? 'bg-transparent border-transparent opacity-0' : ''}`}>
@@ -109,6 +118,7 @@ export default function Navbar() {
               onMouseLeave={() => setIsExploreOpen(false)}
             >
               <button 
+                suppressHydrationWarning
                 onClick={() => setIsExploreOpen(!isExploreOpen)}
                 className="hover:text-primary transition-colors flex items-center gap-1 cursor-pointer py-1.5"
               >
@@ -195,7 +205,8 @@ export default function Navbar() {
             <span className={`h-[1.5px] w-full bg-current transition-transform origin-right ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
           </button>
         </div>
-      </motion.nav>
+      </div>
+    </motion.nav>
 
       {/* Full-screen Mobile Menu */}
       <AnimatePresence>
@@ -233,6 +244,7 @@ export default function Navbar() {
                 className="flex flex-col items-center w-full"
               >
                 <button 
+                  suppressHydrationWarning
                   onClick={() => setIsExploreOpen(!isExploreOpen)}
                   className="font-display text-3xl md:text-4xl text-foreground hover:text-primary transition-colors flex items-center gap-2 cursor-pointer"
                 >

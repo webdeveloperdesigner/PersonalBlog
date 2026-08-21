@@ -160,6 +160,15 @@ export default function PageLoader() {
 
             {/* Terminal Body */}
             <div className="p-6 flex flex-col gap-4">
+              {/* Active System Update Notice */}
+              <div className="px-3 py-2 rounded-lg bg-[#FF7029]/10 border border-[#FF7029]/30 text-foreground font-mono text-[10px] uppercase tracking-wider flex items-center justify-between gap-2">
+                <span className="flex items-center gap-1.5 font-bold text-[#FF7029]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029] animate-ping" />
+                  [SYS_NOTICE] LIVE SYSTEM DATA & FEATURE UPDATES IN PROGRESS
+                </span>
+                <span className="text-[9px] opacity-70 font-mono" style={{ color: '#9ca3af' }}>v2.4.0</span>
+              </div>
+
               <div className="font-bold text-xs uppercase tracking-widest flex items-center gap-2 mb-1" style={{ color: '#FF7029' }}>
                 <span>[SYS_INIT]</span> INITIALIZING KERNEL v2.4...
               </div>
