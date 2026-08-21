@@ -19,7 +19,7 @@
 ---
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/webdeveloperdesigner/PersonalBlog?style=flat-square&color=6366f1)
-![GitHub repo size](https://img.shields.io/github/repo-size/webdeveloperdesigner/PersonalBlog?style=flat-square&color=a855f7)
+![GitHub code size](https://img.shields.io/github/languages/code-size/webdeveloperdesigner/PersonalBlog?style=flat-square&color=a855f7)
 ![GitHub stars](https://img.shields.io/github/stars/webdeveloperdesigner/PersonalBlog?style=flat-square&color=f59e0b)
 ![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
 
