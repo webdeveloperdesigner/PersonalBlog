@@ -92,10 +92,10 @@ export default function Navbar() {
         </div>
 
         {/* Main Navbar Bar */}
-        <div className="w-full px-6 md:px-12 xl:px-16 pt-3 pb-2 flex items-center justify-between pointer-events-none">
+        <div className={`w-full px-4 sm:px-6 md:px-12 xl:px-16 py-2.5 flex items-center justify-between pointer-events-auto transition-all duration-300 ${compact ? 'bg-background/85 backdrop-blur-xl border-b border-foreground/10 shadow-sm' : 'bg-transparent'}`}>
           {/* Left: Logo */}
-          <div className={`pointer-events-auto transition-opacity duration-500 ${compact ? 'opacity-0' : 'opacity-100'}`}>
-            <Link href="/" className="font-sans font-black text-2xl text-foreground tracking-tighter hover:text-primary transition-colors">
+          <div className="pointer-events-auto transition-opacity duration-300 opacity-100">
+            <Link href="/" className="font-sans font-black text-xl sm:text-2xl text-foreground tracking-tighter hover:text-primary transition-colors">
               VIVEK
             </Link>
           </div>
@@ -176,7 +176,7 @@ export default function Navbar() {
         </div>
 
         {/* Right: Actions */}
-        <div className={`pointer-events-auto flex items-center gap-6 transition-opacity duration-500 ${compact ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="pointer-events-auto flex items-center gap-3 sm:gap-6 opacity-100 transition-opacity duration-300">
           <button
             suppressHydrationWarning
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -198,11 +198,13 @@ export default function Navbar() {
           <button 
             suppressHydrationWarning
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-foreground hover:text-primary transition-colors flex flex-col gap-1.5 w-6 cursor-pointer"
+            className="text-foreground hover:text-primary transition-colors flex flex-col items-center justify-center p-2 -mr-2 cursor-pointer rounded-lg bg-background/80 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border border-foreground/10 lg:border-none"
             aria-label="Menu"
           >
-            <span className={`h-[1.5px] w-full bg-current transition-transform origin-right ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
-            <span className={`h-[1.5px] w-full bg-current transition-transform origin-right ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
+            <div className="flex flex-col gap-1.5 w-5">
+              <span className={`h-[2px] w-full bg-current transition-all duration-300 origin-center ${isMobileMenuOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
+              <span className={`h-[2px] w-full bg-current transition-all duration-300 origin-center ${isMobileMenuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
+            </div>
           </button>
         </div>
       </div>
@@ -216,7 +218,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[55] bg-background/98 text-foreground backdrop-blur-2xl flex flex-col items-center justify-center p-6 overflow-y-auto"
+            className="fixed inset-0 z-[55] bg-background/98 text-foreground backdrop-blur-2xl flex flex-col items-center justify-start sm:justify-center pt-28 pb-12 px-6 overflow-y-auto"
           >
             <ul className="flex flex-col items-center gap-5 mb-8 w-full max-w-md">
               {navLinks.map((link, i) => (

@@ -69,7 +69,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative bg-background min-h-screen pt-44 pb-0 overflow-hidden flex flex-col selection:bg-primary/30 selection:text-primary">
+    <section id="hero" className="relative bg-background min-h-screen pt-44 sm:pt-48 md:pt-52 pb-0 overflow-hidden flex flex-col selection:bg-primary/30 selection:text-primary">
       
       {/* Background Grid Pattern */}
       <div 

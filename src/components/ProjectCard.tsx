@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: { project: any }) {
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#0A0A0C] dark:via-[#0A0A0C]/85" />
       </div>
 
-      <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+      <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-between z-10">
         <div className="flex justify-between items-start">
           <div className="font-mono text-xs font-bold px-3.5 py-1.5 rounded-full backdrop-blur-md border border-black/10 dark:border-white/20 bg-black/5 dark:bg-white/15 text-gray-800 dark:text-gray-200">
             {project.id}

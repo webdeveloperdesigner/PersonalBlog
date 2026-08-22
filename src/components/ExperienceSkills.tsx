@@ -4,33 +4,54 @@ import { motion } from 'framer-motion';
 import { 
   Eye, Code2, Calendar, Leaf, Atom, Hexagon, Wind, Flame, 
   Cloud, GitBranch, Send, Database, Lock, Network, ChevronUp,
-  FileCode, TerminalSquare, Layout
+  FileCode, TerminalSquare, Layout, ExternalLink, Globe, Sparkles
 } from 'lucide-react';
 
 const experiences = [
   {
     id: 1,
-    role: "Full Stack Development — JOVAC",
-    company: "Coding Blocks @ GLA University",
-    date: "May 2024 - July 2024",
-    icon: <Eye className="w-5 h-5 text-[#FF7029]" />,
+    role: "Web Development Intern",
+    subHead: "Responsive Web Design & Performance Optimization",
+    company: "MOTIONCUT",
+    date: "Jun - Jul 2024",
+    icon: <Code2 className="w-5 h-5 text-[#FF7029]" />,
     bullets: [
-      "Completed job-oriented full-stack development course on the MERN stack.",
-      "Built a fully functional e-commerce app with admin panel and Razorpay payment integration.",
-      "Integrated secure JWT auth, real-time inventory, and Stripe/Razorpay payment gateway."
-    ]
+      "Developed and maintained responsive websites using HTML, CSS, and JavaScript.",
+      "Analyzed project requirements and provided solutions based on given images and specifications.",
+      "Optimized website performance for better user experience and debugged front-end issues."
+    ],
+    certUrl: "https://github.com/webdeveloperdesigner/PersonalBlog",
+    certLabel: "View Experience Certificate"
   },
   {
     id: 2,
-    role: "Java Developer Training",
-    company: "Internship Studio",
-    date: "July 2024 - August 2024",
-    icon: <Code2 className="w-5 h-5 text-[#FF7029]" />,
+    role: "Web Developer Intern",
+    subHead: "SEO Optimization & Content Management",
+    company: "DIGIHERO",
+    date: "Jan - Feb 2025",
+    icon: <Globe className="w-5 h-5 text-[#FF7029]" />,
     bullets: [
-      "Completed Java programming training with emphasis on OOP concepts.",
-      "Built a 'Pizza Bill Generator' — ordering and billing system with dynamic pricing.",
-      "Practised writing clean, modular Java code following industry best practices."
-    ]
+      "Created and optimized SEO-friendly blog content for a WordPress website combining technical and creative writing.",
+      "Performed keyword research, crafted meta tags, and implemented SEO strategies to boost visibility.",
+      "Managed blog publication and formatting through the WordPress CMS while gaining digital marketing experience."
+    ],
+    certUrl: "https://github.com/webdeveloperdesigner/PersonalBlog",
+    certLabel: "View Experience Certificate"
+  },
+  {
+    id: 3,
+    role: "BodhAI — AI-Powered Learning Practice Platform",
+    subHead: "React, Firebase & Tailwind CSS Architecture",
+    company: "BODHAI PLATFORM",
+    date: "Jul - Sep 2025",
+    icon: <Sparkles className="w-5 h-5 text-[#FF7029]" />,
+    bullets: [
+      "Developed an AI-powered platform for adaptive multiple-choice quizzes and coding assessments with real-time feedback.",
+      "Implemented user analytics to track strengths, weaknesses, and suggest tailored learning paths.",
+      "Integrated Firebase-based admin tools for content management alongside a clean Tailwind CSS responsive interface."
+    ],
+    certUrl: "https://github.com/webdeveloperdesigner/BodhAI",
+    certLabel: "View Live Project / GitHub"
   }
 ];
 
@@ -124,43 +145,65 @@ export default function ExperienceSkills() {
                   <div className="absolute left-[4px] top-8 w-4 h-4 rounded-full bg-[#FF7029] z-10 shadow-[0_0_15px_rgba(255,112,41,0.8)]" />
 
                   {/* Card */}
-                  <div className="bg-background border border-foreground/10 rounded-2xl p-6 md:p-8 hover:border-[#FF7029]/45 transition-all duration-300">
+                  <div className="bg-background border border-foreground/10 rounded-2xl p-6 md:p-8 hover:border-[#FF7029]/45 transition-all duration-300 flex flex-col gap-6">
                     
-                    {/* Card Header Row */}
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                      
-                      <div className="flex items-start gap-4">
-                        {/* Icon Box */}
-                        <div className="w-12 h-12 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center shrink-0 mt-1">
+                    {/* Top Row: [LOGO] Company Name + Date Badge */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground/10 pb-4">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center shrink-0">
                           {exp.icon}
                         </div>
-                        <div>
-                          <h3 className="font-display text-xl md:text-2xl text-foreground leading-tight mb-1">
-                            {exp.role}
-                          </h3>
-                          <div className="flex items-center gap-2 mt-2">
-                            <span className="text-[#FF7029] text-sm">💼</span>
-                            <p className="font-mono text-xs text-foreground/60 tracking-widest uppercase">{exp.company}</p>
-                          </div>
-                        </div>
+                        <span className="font-mono text-xs text-foreground/80 tracking-widest uppercase font-bold truncate">
+                          {exp.company}
+                        </span>
                       </div>
 
-                      {/* Date Badge */}
-                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/5 h-fit shrink-0">
-                        <Calendar className="w-3 h-3 text-[#FF7029]" />
-                        <span className="font-mono text-[10px] text-foreground/60 uppercase tracking-widest">{exp.date}</span>
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-foreground/15 bg-foreground/5 font-mono text-[10px] sm:text-xs text-foreground/70 tracking-wider shrink-0 font-medium">
+                        <Calendar className="w-3.5 h-3.5 text-[#FF7029]" />
+                        <span className="whitespace-nowrap">{exp.date}</span>
                       </div>
                     </div>
 
-                    {/* Bullets */}
-                    <ul className="space-y-3">
-                      {exp.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#FF7029] shrink-0 mt-2" />
-                          <p className="font-sans text-sm text-foreground/70 leading-relaxed">{bullet}</p>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Main Heading & Sub-Head */}
+                    <div className="flex flex-col gap-1.5">
+                      <h3 className="font-sans font-black text-xl sm:text-2xl text-foreground tracking-tight leading-snug">
+                        {exp.role}
+                      </h3>
+                      <p className="font-sans text-xs sm:text-sm text-[#FF7029] font-semibold tracking-wide">
+                        {exp.subHead}
+                      </p>
+                    </div>
+
+                    {/* Other Details (Bullets) */}
+                    <div className="flex flex-col gap-3">
+                      <span className="font-mono text-[10px] text-foreground/50 uppercase tracking-widest font-bold">
+                        OTHER DETAILS:
+                      </span>
+                      <ul className="space-y-3">
+                        {exp.bullets.map((bullet, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#FF7029] shrink-0 mt-2" />
+                            <p className="font-sans text-sm text-foreground/75 leading-relaxed">{bullet}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Verification Section Footer */}
+                    <div className="pt-4 border-t border-foreground/10 flex items-center justify-between flex-wrap gap-2">
+                      <span className="font-mono text-[10px] text-foreground/50 uppercase tracking-widest font-bold">
+                        VERIFICATION:
+                      </span>
+                      <a 
+                        href={exp.certUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono text-xs text-[#FF7029] hover:underline font-semibold transition-colors"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>{exp.certLabel}</span>
+                      </a>
+                    </div>
 
                   </div>
                 </motion.div>

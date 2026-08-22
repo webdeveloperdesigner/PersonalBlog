@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   const wordmarkRef = useRef<HTMLDivElement>(null);
@@ -46,12 +47,11 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs text-foreground/50 border-t border-foreground/10 pt-8">
           <p>© {new Date().getFullYear()} Vivek. All rights reserved</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <a href="/sitemap" className="hover:text-primary transition-colors">Sitemap</a>
             <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
             <a href="/terms" className="hover:text-primary transition-colors">Terms</a>
             <a href="/imprint" className="hover:text-primary transition-colors">Imprint</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-primary transition-colors">Back to top ↑</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />

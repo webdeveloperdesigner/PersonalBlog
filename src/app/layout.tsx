@@ -3,6 +3,7 @@ import { Geist, JetBrains_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -31,8 +32,6 @@ export const metadata: Metadata = {
   }
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +43,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${jetbrainsMono.variable} ${fraunces.variable} antialiased`}
     >
-      <body suppressHydrationWarning className="bg-carbon text-bone min-h-screen font-sans selection:bg-ember/30 selection:text-ember relative overflow-x-hidden">
+      <body suppressHydrationWarning className="bg-carbon text-bone min-h-screen font-sans selection:bg-[#FF7029]/30 selection:text-[#FF7029] relative overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <Navbar />
           <SmoothScroll>
@@ -52,6 +51,7 @@ export default function RootLayout({
             <div className="vignette"></div>
             {children}
           </SmoothScroll>
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

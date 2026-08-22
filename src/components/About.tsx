@@ -12,7 +12,7 @@ const skills = [
 ];
 
 const stats = [
-  { label: "Live projects", value: 2, suffix: "" },
+  { label: "Live projects", value: 3, suffix: "" },
   { label: "Internships", value: 2, suffix: "" },
   { label: "Tools mastered", value: 12, suffix: "+" },
   { label: "Certifications", value: 3, suffix: "" }
@@ -21,7 +21,7 @@ const stats = [
 function Counter({ from, to, suffix }: { from: number, to: number, suffix: string }) {
   const [count, setCount] = useState(from);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
     if (isInView) {
@@ -45,7 +45,8 @@ function Counter({ from, to, suffix }: { from: number, to: number, suffix: strin
     }
   }, [isInView, from, to]);
 
-  return <span ref={ref}>{count < 10 && count > 0 ? "0" + count : count}{suffix}</span>;
+  const formattedCount = count < 10 ? `0${count}` : `${count}`;
+  return <span ref={ref}>{formattedCount}{suffix}</span>;
 }
 
 export default function About() {
@@ -130,22 +131,25 @@ export default function About() {
 
             {/* Skill Bars */}
             <div className="mb-16 space-y-6">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-primary mb-6">Proficiency</h3>
+              <div className="flex justify-between items-center mb-6 border-b border-foreground/10 pb-3">
+                <h3 className="font-mono text-xs uppercase tracking-widest text-[#FF7029] font-bold">PROFICIENCY</h3>
+                <span className="font-mono text-[10px] uppercase text-foreground/50 tracking-wider font-semibold">ENGINEERING STACK</span>
+              </div>
               {skills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between font-mono text-xs text-foreground/80 mb-2">
-                    <span>{skill.name}</span>
-                    <span>{skill.level}%</span>
+                <div key={index} className="space-y-2">
+                  <div className="flex justify-between items-center font-mono text-xs sm:text-sm text-foreground/90 font-medium">
+                    <span className="font-semibold text-foreground">{skill.name}</span>
+                    <span className="font-bold text-[#FF7029] bg-[#FF7029]/10 px-2 py-0.5 rounded text-[11px] sm:text-xs font-mono">{skill.level}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-[#1A1A1A] rounded-full overflow-hidden relative">
+                  <div className="h-2.5 w-full bg-foreground/15 dark:bg-[#1E1E22] rounded-full overflow-hidden relative border border-foreground/10">
                     <motion.div 
                       initial={{ width: 0 }}
-                      whileInView={{ width: skill.level + '%' }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 1.5, ease: "easeOut", delay: index * 0.1 }}
-                      className="absolute top-0 left-0 h-full bg-primary relative overflow-hidden"
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true, amount: 0.1 }}
+                      transition={{ duration: 1.2, ease: "easeOut", delay: index * 0.1 }}
+                      className="h-full bg-gradient-to-r from-[#FF7029] via-[#FF8547] to-[#FFA07A] rounded-full relative overflow-hidden shadow-[0_0_10px_rgba(255,112,41,0.5)]"
                     >
-                      <div className="absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent via-[#FBD5A5]/30 to-transparent animate-shimmer" />
+                      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] animate-shimmer" />
                     </motion.div>
                   </div>
                 </div>
@@ -153,13 +157,13 @@ export default function About() {
             </div>
 
             {/* Stats Counters */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-foreground/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 pt-8 border-t border-foreground/10">
               {stats.map((stat, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <div className="font-display text-4xl text-foreground">
+                <div key={i} className="flex flex-col gap-1.5 p-3 sm:p-0 rounded-xl bg-foreground/[0.03] md:bg-transparent border border-foreground/5 md:border-none">
+                  <div className="font-display text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
                     <Counter from={0} to={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div className="font-mono text-[10px] text-foreground/50 uppercase tracking-widest">{stat.label}</div>
+                  <div className="font-mono text-[10px] sm:text-xs text-foreground/60 uppercase tracking-widest font-semibold">{stat.label}</div>
                 </div>
               ))}
             </div>
