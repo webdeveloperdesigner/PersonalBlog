@@ -12,29 +12,32 @@ export default function Sitemap() {
   const sitemapData = [
     {
       category: "Core Navigation",
-      description: "Primary routes and modules",
+      description: "Primary routes and portfolio modules",
       links: [
         { name: "Home Portfolio", path: "/", icon: <Home className="w-4 h-4" /> },
         { name: "Interactive Presentation", path: "/me", icon: <User className="w-4 h-4" /> },
         { name: "Case Studies", path: "/case-studies", icon: <Folder className="w-4 h-4" /> },
+        { name: "Projects Archive", path: "/projects", icon: <Archive className="w-4 h-4" /> },
         { name: "Writings & Articles", path: "/writings", icon: <PenTool className="w-4 h-4" /> },
         { name: "Photography Gallery", path: "/gallery", icon: <ImageIcon className="w-4 h-4" /> },
       ]
     },
     {
-      category: "Archives & History",
-      description: "Chronological data and legacy views",
+      category: "Updates & Changelog",
+      description: "Live release feeds and system telemetry",
       links: [
-        { name: "Event Timeline", path: "/timeline", icon: <Clock className="w-4 h-4" /> },
+        { name: "What's New Live Stream", path: "/whats-new", icon: <FileText className="w-4 h-4 text-[#FF7029]" /> },
+        { name: "Engineering Changelog", path: "/changelog", icon: <FileText className="w-4 h-4 text-cyan-400" /> },
+        { name: "Career Timeline", path: "/timeline", icon: <Clock className="w-4 h-4" /> },
         { name: "Works & Writings (Legacy)", path: "/Works-Writings-Timeline", icon: <Archive className="w-4 h-4" /> },
       ]
     },
     {
       category: "System & Legal",
-      description: "Administrative and compliance pages",
+      description: "Administrative, contact and compliance pages",
       links: [
         { name: "Start a Project", path: "/contact", icon: <Mail className="w-4 h-4" /> },
-        { name: "System Status", path: "/maintenance", icon: <Wrench className="w-4 h-4" /> },
+        { name: "System Maintenance", path: "/maintenance", icon: <Wrench className="w-4 h-4" /> },
         { name: "Privacy Policy", path: "/privacy", icon: <FileText className="w-4 h-4" /> },
         { name: "Terms & Conditions", path: "/terms", icon: <FileText className="w-4 h-4" /> },
         { name: "Imprint", path: "/imprint", icon: <FileText className="w-4 h-4" /> },

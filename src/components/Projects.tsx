@@ -101,7 +101,8 @@ export default function Projects() {
   }, { scope: sectionRef, dependencies: [] });
 
   return (
-    <section ref={sectionRef} id="work" className="bg-background text-foreground relative transition-colors duration-300">
+    <section ref={sectionRef} id="projects" className="bg-background text-foreground relative transition-colors duration-300">
+      <div id="work" />
       <div ref={pinSectionRef} className="relative overflow-hidden flex flex-col md:h-screen min-h-[800px]">
         {/* Title Header - Normal Flow */}
       <div className="header-content container mx-auto px-6 md:px-16 pt-32 pb-12 shrink-0">

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Footer from '@/components/Footer';
 import { 
   ArrowLeft, Sparkles, CheckCircle2, Rocket, Zap, ShieldCheck, 
   ArrowUpRight, ExternalLink, Code2, Globe, Cpu
@@ -16,16 +17,36 @@ const whatsNewItems = [
     id: '01',
     badge: 'LIVE NOW',
     badgeColor: 'bg-[#FF7029] text-white',
-    title: 'Experience Timeline Update: MotionCut, Digihero & BodhAI',
-    date: 'August 22, 2026',
-    desc: 'Updated career experience timeline cards formatted in exact executive structure featuring MotionCut Web Development, Digihero SEO Optimization, and BodhAI AI Learning Platform.',
-    tags: ['Resume Update', 'Timeline', 'MotionCut', 'Digihero', 'BodhAI'],
+    title: 'Executive Experience Timeline Architecture',
+    date: 'August 23, 2026',
+    desc: 'Updated career experience timeline cards formatted in exact executive structure featuring MotionCut Web Development, Digihero SEO Optimization, and BodhAI AI Learning Platform with single-line titles and verification certificate links.',
+    tags: ['Timeline', 'MotionCut', 'Digihero', 'BodhAI', 'Certificates'],
     link: '/#experience'
   },
   {
     id: '02',
-    badge: 'FEATURED PROJECT',
+    badge: 'ARCHITECTURE',
     badgeColor: 'bg-emerald-500 text-white',
+    title: 'Full-Site Smooth Anchor Scroll Engine',
+    date: 'August 23, 2026',
+    desc: 'Engineered smooth scroll interceptor handlers routing /#hero, /#about, /#experience, /#projects, and /#blog seamlessly across desktop and mobile navigation.',
+    tags: ['Smooth Scroll', 'Anchor Navigation', 'Navbar', 'UX Engine'],
+    link: '/#projects'
+  },
+  {
+    id: '03',
+    badge: 'ENGINEERING LOG',
+    badgeColor: 'bg-purple-500 text-white',
+    title: 'GitHub-Style Engineering Release Log (/changelog)',
+    date: 'August 23, 2026',
+    desc: 'Redesigned /changelog with structured change cards, collapsible open/close details, metric badges, releases index sidebar, and direct GitHub commit links.',
+    tags: ['Changelog', 'GitHub Integration', 'Collapsible Accordion', 'Release Feed'],
+    link: '/changelog'
+  },
+  {
+    id: '04',
+    badge: 'FEATURED PROJECT',
+    badgeColor: 'bg-blue-500 text-white',
     title: 'BodhAI — AI-Powered Learning Practice Platform',
     date: 'August 2026',
     desc: 'Interactive MCQ & coding practice platform powered by React, Firebase, and Tailwind CSS. Features custom AI assessment, performance tracking, and live quiz generator.',
@@ -33,9 +54,9 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/BodhAI'
   },
   {
-    id: '03',
+    id: '05',
     badge: 'HEALTHCARE AI',
-    badgeColor: 'bg-blue-500 text-white',
+    badgeColor: 'bg-cyan-500 text-white',
     title: 'AI Healthcare Chatbot',
     date: 'August 2026',
     desc: 'Intelligent healthcare assistant website providing user-friendly medical guidance, symptom analysis, and immediate doctor referral dispatch.',
@@ -43,9 +64,9 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-'
   },
   {
-    id: '04',
+    id: '06',
     badge: '2026 EDITION',
-    badgeColor: 'bg-purple-500 text-white',
+    badgeColor: 'bg-amber-500 text-white',
     title: 'Veda Resume — Smart ATS Optimization Engine',
     date: '2026 Edition',
     desc: 'Next-generation AI resume builder and ATS scanner engineered to optimize resume keywords and increase interview callbacks.',
@@ -53,19 +74,40 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/veda-resume'
   },
   {
-    id: '05',
-    badge: 'NAV & THEME',
-    badgeColor: 'bg-amber-500 text-white',
-    title: 'Glassmorphism Navbar & Dual Light/Dark Theme',
-    date: 'August 2026',
-    desc: 'Hardware-accelerated glassmorphic navbar with sticky scroll blur, interactive Explore drawer, and 100% synchronized theme engine.',
-    tags: ['UI/UX', 'Glassmorphism', 'Tailwind CSS', 'Framer Motion'],
+    id: '07',
+    badge: 'MOBILE OPTIMIZATION',
+    badgeColor: 'bg-teal-500 text-white',
+    title: 'Responsive Development Notice Banner',
+    date: 'August 23, 2026',
+    desc: 'Re-engineered top development banner with adaptive mobile typography and clean icon-only GitHub quick action button.',
+    tags: ['Mobile UX', 'Notice Banner', 'Responsive', 'GitHub Icon'],
     link: '/'
+  },
+  {
+    id: '08',
+    badge: 'NAV & THEME',
+    badgeColor: 'bg-indigo-500 text-white',
+    title: 'Glassmorphic Sticky Header & Theme Engine',
+    date: 'August 23, 2026',
+    desc: 'Configured sticky backdrop-blur-xl navbar with persistent VIVEK logo, Explore navigation dropdown, and synchronized Light/Dark mode switcher.',
+    tags: ['Header', 'Glassmorphism', 'Dark Mode', 'Explore Dropdown'],
+    link: '/'
+  },
+  {
+    id: '09',
+    badge: 'SYSTEM FOOTER',
+    badgeColor: 'bg-rose-500 text-white',
+    title: 'Global System Footer Integration',
+    date: 'August 23, 2026',
+    desc: 'Integrated marquee text strip, brand wordmark, quick navigation shortcuts, and smooth back-to-top controls across all subpages.',
+    tags: ['Footer', 'Marquee', 'Branding', 'Subpages'],
+    link: '/#contact'
   }
 ];
 
 export default function WhatsNewPage() {
   return (
+    <>
     <main className="min-h-screen bg-background text-foreground pt-44 pb-24 px-6 md:px-16 relative selection:bg-primary/30 selection:text-primary">
       {/* Background Grid Pattern */}
       <div 
@@ -183,12 +225,14 @@ export default function WhatsNewPage() {
             href="/changelog"
             className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary font-mono text-xs uppercase tracking-widest font-bold transition-colors"
           >
-            <span>VIEW FULL SYSTEM CHANGELOG (v2.4.0)</span>
+            <span>VIEW FULL SYSTEM CHANGELOG (v2.5.0)</span>
             <ExternalLink className="w-4 h-4" />
           </Link>
         </div>
 
       </div>
     </main>
+    <Footer />
+    </>
   );
 }

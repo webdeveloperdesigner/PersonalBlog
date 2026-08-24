@@ -12,7 +12,8 @@ export default function WritingsSection() {
   }));
 
   return (
-    <section id="writings" className="py-32 bg-background text-foreground relative border-t border-foreground/10">
+    <section id="blog" className="py-32 bg-background text-foreground relative border-t border-foreground/10">
+      <div id="writings" />
       {/* Subtle Background Pattern */}
       <div 
         className="absolute inset-0 z-0 opacity-15 pointer-events-none"

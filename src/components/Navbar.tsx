@@ -10,11 +10,11 @@ import NoticeBanner from './NoticeBanner';
 import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit } from 'lucide-react';
 
 const navLinks = [
-  { name: '1.0 HOME', href: '/' },
+  { name: '1.0 HOME', href: '/#hero' },
   { name: '2.0 ABOUT', href: '/#about' },
   { name: '3.0 EXPERIENCE', href: '/#experience' },
   { name: '4.0 PROJECTS', href: '/#projects' },
-  { name: '5.0 BLOG', href: '/writings' },
+  { name: '5.0 BLOG', href: '/#blog' },
 ];
 
 const exploreItems = [
@@ -36,6 +36,21 @@ export default function Navbar() {
   const [compact, setCompact] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isExploreOpen, setIsExploreOpen] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMobileMenuOpen(false);
+    setIsExploreOpen(false);
+    if (href.includes('#')) {
+      const targetId = href.split('#')[1];
+      if (pathname === '/') {
+        e.preventDefault();
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -105,7 +120,11 @@ export default function Navbar() {
           <ul className="flex items-center gap-8 font-mono text-[10px] text-foreground/80 uppercase tracking-widest font-bold mr-8">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link href={link.href} className="hover:text-primary transition-colors flex items-center gap-1.5">
+                <Link 
+                  href={link.href} 
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="hover:text-primary transition-colors flex items-center gap-1.5"
+                >
                   <span className="text-primary font-extrabold">{link.name.split(' ')[0]}</span> {link.name.split(' ')[1]}
                 </Link>
               </li>
@@ -230,7 +249,7 @@ export default function Navbar() {
                 >
                   <Link 
                     href={link.href} 
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="font-display text-3xl md:text-4xl text-foreground hover:text-primary transition-colors"
                   >
                     {link.name}

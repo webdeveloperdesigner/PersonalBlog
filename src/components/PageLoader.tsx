@@ -12,15 +12,18 @@ const steps = [
 ];
 
 export default function PageLoader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Check if loader has already run in this session
   useEffect(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('portfolio_loaded') === 'true') {
-      setLoading(false);
+    if (typeof window !== 'undefined') {
+      const isLoaded = sessionStorage.getItem('portfolio_loaded') === 'true';
+      if (!isLoaded) {
+        setLoading(true);
+      }
     }
   }, []);
 
@@ -166,11 +169,11 @@ export default function PageLoader() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029] animate-ping" />
                   [SYS_NOTICE] LIVE SYSTEM DATA & FEATURE UPDATES IN PROGRESS
                 </span>
-                <span className="text-[9px] opacity-70 font-mono" style={{ color: '#9ca3af' }}>v2.4.0</span>
+                <span className="text-[9px] opacity-70 font-mono" style={{ color: '#9ca3af' }}>v2.5.0</span>
               </div>
 
               <div className="font-bold text-xs uppercase tracking-widest flex items-center gap-2 mb-1" style={{ color: '#FF7029' }}>
-                <span>[SYS_INIT]</span> INITIALIZING KERNEL v2.4...
+                <span>[SYS_INIT]</span> INITIALIZING KERNEL v2.5...
               </div>
 
               {/* Steps List */}

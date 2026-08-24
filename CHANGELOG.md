@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [v2.5.0] - 2026-08-23 (Executive Release Suite)
+
+### 🌟 Added & Refined
+- **Executive Experience Timeline Architecture (`ExperienceSkills.tsx`):** Implemented exact ASCII schematic layout for MotionCut, Digihero, and BodhAI cards with 100% full-width single-line titles and direct verification certificate links.
+- **Full-Site Smooth Anchor Scroll Engine (`Navbar.tsx` & `globals.css`):** Configured global smooth scrolling with interceptors routing `/#hero`, `/#about`, `/#experience`, `/#projects`, and `/#blog` seamlessly.
+- **GitHub-Style Engineering Release Log (`/changelog`):** Redesigned `/changelog` with structured change cards, collapsible open/close details, metric badges, releases index sidebar, and direct GitHub commit links.
+- **Responsive Development Notice Banner (`NoticeBanner.tsx`):** Re-engineered top notice banner with mobile-optimized text and icon-only GitHub link for zero line wrapping on small screens.
+- **Dedicated `/whats-new` Live Status Stream:** Launched real-time release status page showcasing feature rollouts, active project highlights, and direct GitHub verification links.
+- **Global Subpage Footer Integration (`Footer.tsx`):** Mounted standard portfolio footer with marquee text strip, brand wordmark, quick links, and smooth back-to-top controls across all subpages.
+
+---
+
 ## [v2.4.0] - 2026-08-22 (Latest Major Enhancement Suite)
 
 ### 🌟 Added
