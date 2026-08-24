@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import NoticePopup from '@/components/NoticePopup';
+import Footer from '@/components/Footer';
 import { 
   motion, 
   useScroll, 
@@ -58,7 +60,7 @@ export const capabilities = [
 ];
 
 // ==========================================
-// 2. PERFECT CSS MARQUEE: STARTS 100% OFFSCREEN RIGHT (100vw), EXITS OFFSCREEN LEFT (-100%), PAUSES 3.5S
+// 2. PERFECT CSS MARQUEE
 // ==========================================
 function KineticHeadingMarquee() {
   return (
@@ -127,7 +129,7 @@ export default function CorePage() {
     setActiveIndex((prev) => (prev - 1 + numItems) % numItems);
   };
 
-  // Auto-scroll center cards every 3.5 seconds (pauses on hover/drag)
+  // Auto-scroll center cards every 3.5 seconds
   useEffect(() => {
     if (isHovered) return;
     const interval = setInterval(() => {
@@ -136,7 +138,6 @@ export default function CorePage() {
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  // SHORTEST CIRCULAR OFFSET MATH (Never-ending Loop)
   const getCircularOffset = (index: number, active: number, total: number) => {
     let diff = index - active;
     while (diff > total / 2) diff -= total;
@@ -144,7 +145,6 @@ export default function CorePage() {
     return diff;
   };
 
-  // Keyboard Arrow Listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') next();
@@ -154,7 +154,6 @@ export default function CorePage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Wheel Scroll Listener with Debounce
   const lastWheelTime = useRef<number>(0);
   const handleWheel = (e: React.WheelEvent) => {
     const now = Date.now();
@@ -170,136 +169,145 @@ export default function CorePage() {
   };
 
   return (
-    <main 
-      onWheel={handleWheel}
-      className="relative min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white overflow-hidden flex flex-col items-center justify-between pt-36 sm:pt-44 pb-16 select-none transition-colors duration-300"
-    >
-      
-      {/* Subtle Ambient Radial Blur Spots */}
-      <div className="absolute top-[28%] left-[20%] w-[550px] h-[550px] bg-blue-500/10 dark:bg-[rgba(56,189,248,0.08)] rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="absolute top-[28%] right-[15%] w-[500px] h-[500px] bg-purple-500/10 dark:bg-[rgba(168,85,247,0.08)] rounded-full blur-[140px] pointer-events-none z-0" />
+    <>
+      <NoticePopup 
+        storageKey="core_page"
+        title="3D Core Capabilities Stage"
+        message="Currently working on 3D Core Capabilities & kinetic marquee stage. Some interactions are under active development."
+        tag="FEATURE PREVIEW"
+      />
 
-      {/* TOP HEADER & MARQUEE */}
-      <div className="relative z-10 flex flex-col items-center w-full px-4">
-        
-        {/* Core Capabilities Pill Badge */}
-        <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-black/5 dark:bg-white/[0.04] border border-black/10 dark:border-white/15 backdrop-blur-md shadow-sm mb-4">
-          <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-purple-400 animate-pulse" />
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-black/90 dark:text-white/90 font-bold">
-            ● CORE CAPABILITIES ●
-          </span>
-          <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-purple-400 animate-pulse" />
-        </div>
-
-        {/* Oversized Kinetic Marquee (Pure CSS 100vw -> -100% -> 3.5s pause) */}
-        <KineticHeadingMarquee />
-
-        {/* Subtitle */}
-        <p className="text-center font-sans text-sm sm:text-base text-black/60 dark:text-white/60 max-w-xl px-4 mt-2 mb-4 leading-relaxed font-medium">
-          Specialized in cutting-edge technologies that power modern digital experiences
-        </p>
-      </div>
-
-      {/* 3D INFINITE CIRCULAR CAROUSEL STAGE */}
-      <div 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative z-10 w-full h-[450px] flex items-center justify-center overflow-hidden my-4"
+      <main 
+        onWheel={handleWheel}
+        className="relative min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white overflow-hidden flex flex-col items-center justify-between pt-36 sm:pt-44 pb-16 select-none transition-colors duration-300"
       >
         
-        {/* Navigation Arrow Buttons */}
-        <button
-          onClick={previous}
-          aria-label="Previous capability"
-          className="absolute left-4 sm:left-12 z-30 p-3.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/15 text-black/80 dark:text-white/80 hover:bg-black/10 dark:hover:bg-white/15 hover:text-black dark:hover:text-white hover:scale-110 transition-all backdrop-blur-md shadow-md"
+        {/* Ambient Radial Blur Spots */}
+        <div className="absolute top-[28%] left-[20%] w-[550px] h-[550px] bg-blue-500/10 dark:bg-[rgba(56,189,248,0.08)] rounded-full blur-[140px] pointer-events-none z-0" />
+        <div className="absolute top-[28%] right-[15%] w-[500px] h-[500px] bg-purple-500/10 dark:bg-[rgba(168,85,247,0.08)] rounded-full blur-[140px] pointer-events-none z-0" />
+
+        {/* TOP HEADER & MARQUEE */}
+        <div className="relative z-10 flex flex-col items-center w-full px-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-xs text-black/70 dark:text-white/70 tracking-widest uppercase font-semibold">
+              CORE CAPABILITIES
+            </span>
+          </div>
+
+          <KineticHeadingMarquee />
+
+          <p className="text-black/60 dark:text-white/60 text-center font-sans text-sm sm:text-base md:text-lg max-w-xl px-4 mt-2 font-medium">
+            Specialized in cutting-edge technologies that power modern digital experiences
+          </p>
+        </div>
+
+        {/* 3D ROTATION STAGE */}
+        <div 
+          className="relative w-full max-w-6xl h-[360px] sm:h-[400px] my-6 flex items-center justify-center z-10"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+          {/* Navigation Controls */}
+          <button
+            onClick={previous}
+            className="absolute left-2 sm:left-8 z-30 p-2 sm:p-3 rounded-full bg-white/80 dark:bg-black/60 border border-black/10 dark:border-white/20 text-black dark:text-white hover:scale-110 active:scale-95 transition-all shadow-xl backdrop-blur-md cursor-pointer"
+            aria-label="Previous Capability"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
 
-        <button
-          onClick={next}
-          aria-label="Next capability"
-          className="absolute right-4 sm:right-12 z-30 p-3.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/15 text-black/80 dark:text-white/80 hover:bg-black/10 dark:hover:bg-white/15 hover:text-black dark:hover:text-white hover:scale-110 transition-all backdrop-blur-md shadow-md"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+          <button
+            onClick={next}
+            className="absolute right-2 sm:right-8 z-30 p-2 sm:p-3 rounded-full bg-white/80 dark:bg-black/60 border border-black/10 dark:border-white/20 text-black dark:text-white hover:scale-110 active:scale-95 transition-all shadow-xl backdrop-blur-md cursor-pointer"
+            aria-label="Next Capability"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
 
-        <motion.div 
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.1}
-          onDragStart={() => setIsHovered(true)}
-          onDragEnd={(e, info) => {
-            setIsHovered(false);
-            if (info.offset.x < -60) next();
-            if (info.offset.x > 60) previous();
-          }}
-          className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing [perspective:1200px]"
-        >
-          {capabilities.map((item, index) => {
-            // Compute shortest wrapped circular offset
-            const offset = getCircularOffset(index, activeIndex, numItems);
-            
-            // Calculate 3D Ring Coordinates
-            let x = offset * 265;
-            let rotateY = offset * -14;
-            let rotate = offset * 6;
-            let scale = 0.92;
-            let opacity = Math.abs(offset) > 2 ? 0 : 1;
-            let zIndex = 10 - Math.abs(offset);
+          {/* 3D CARDS WRAPPER */}
+          <motion.div 
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.1}
+            onDragStart={() => setIsHovered(true)}
+            onDragEnd={(e, info) => {
+              setIsHovered(false);
+              if (info.offset.x < -60) next();
+              if (info.offset.x > 60) previous();
+            }}
+            className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing [perspective:1200px]"
+          >
+            {capabilities.map((item, index) => {
+              const offset = getCircularOffset(index, activeIndex, numItems);
+              const isActive = offset === 0;
+              const absOffset = Math.abs(offset);
 
-            const isCenter = offset === 0;
+              const translateX = offset * 220; 
+              const translateZ = isActive ? 80 : -140 * absOffset;
+              const rotateY = offset * -18; 
+              const opacity = absOffset > 2 ? 0 : isActive ? 1 : 0.65 - absOffset * 0.15;
+              const zIndex = 20 - absOffset;
 
-            return (
-              <motion.div
-                key={item.id}
-                onClick={() => setActiveIndex(index)}
-                animate={{
-                  x,
-                  rotateY,
-                  rotate,
-                  scale,
-                  opacity
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 220,
-                  damping: 26
-                }}
-                style={{
-                  position: 'absolute',
-                  zIndex
-                }}
-                className="capability-card flex flex-col items-center group pointer-events-auto"
-              >
-                {/* Image Wrapper */}
-                <div className="relative w-[185px] sm:w-[235px] h-[270px] sm:h-[335px] rounded-[28px] overflow-hidden border border-black/10 dark:border-white/15 bg-neutral-100 dark:bg-[#121212] transition-all duration-500 shadow-2xl group-hover:border-black/30 dark:group-hover:border-white/40">
-                  {/* Card Cover Image */}
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out pointer-events-none"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                </div>
+              return (
+                <motion.div
+                  key={item.id}
+                  onClick={() => setActiveIndex(index)}
+                  animate={{
+                    x: translateX,
+                    z: translateZ,
+                    rotateY: rotateY,
+                    opacity: opacity,
+                  }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 260,
+                    damping: 26,
+                  }}
+                  style={{ zIndex }}
+                  className={`absolute w-[260px] sm:w-[320px] h-[320px] sm:h-[360px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl border transition-colors duration-300 ${
+                    isActive 
+                      ? 'border-[#FF7029] ring-2 ring-[#FF7029]/30 shadow-[#FF7029]/20' 
+                      : 'border-black/10 dark:border-white/15 hover:border-black/30 dark:hover:border-white/40'
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" style={{ backgroundImage: `url(${item.image})` }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+                  
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] uppercase tracking-widest font-semibold">
+                        {item.category}
+                      </span>
+                      <span className="font-mono text-xs text-white/60 font-bold">
+                        0{index + 1}
+                      </span>
+                    </div>
 
-                {/* Card Title */}
-                <h3 className="mt-4 font-mono font-bold text-sm sm:text-base text-center tracking-wide text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white transition-colors">
-                  {item.title}
-                </h3>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-display mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-white/70 font-mono tracking-wider">
+                        ✦ CLICK TO FOCUS
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
 
-      {/* FOOTER HINT */}
-      <div className="relative z-10 flex items-center justify-center gap-4 text-black/40 dark:text-white/40 font-mono text-xs tracking-widest uppercase mt-4">
-        <span className="w-12 h-[1px] bg-black/20 dark:bg-white/20" />
-        <span>─── Drag or scroll to explore ───</span>
-        <span className="w-12 h-[1px] bg-black/20 dark:bg-white/20" />
-      </div>
+        {/* FOOTER HINT */}
+        <div className="relative z-10 flex items-center justify-center gap-4 text-black/40 dark:text-white/40 font-mono text-xs tracking-widest uppercase mt-4">
+          <span className="w-12 h-[1px] bg-black/20 dark:bg-white/20" />
+          <span>─── Drag or scroll to explore ───</span>
+          <span className="w-12 h-[1px] bg-black/20 dark:bg-white/20" />
+        </div>
 
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -63,7 +63,7 @@ The repository is built on a modern, decoupled architecture designed for maximal
 ## Project Structure
 
 ```text
-v2-portfolio/
+PersonalBlog/
 ├── src/
 │   ├── app/                          # Next.js 16 App Router Routes
 │   │   ├── api/                      # Backend API Proxy Routes (GitHub data, etc.)
@@ -173,11 +173,11 @@ npm run start
 
 The platform documents technical projects and products spanning multiple software disciplines:
 
-| Discipline                           | Notable Projects                                           | Core Technologies                                         |
-| :----------------------------------- | :--------------------------------------------------------- | :-------------------------------------------------------- |
-| **Artificial Intelligence & EdTech** | BodhAI, AI Proctoring Engine, Smart Assessment Platform    | Python, React.js, Firebase, OpenCV, AI Automation         |
-| **Full Stack Web Engineering**       | Personal Portfolio v2, E-Commerce Portals, SaaS Platforms  | Next.js 16, React 19, TypeScript, Tailwind CSS v4, Convex |
-| **Backend & Cloud Architecture**     | Microservice APIs, User Analytics Engine, Data Pipelines   | Node.js, Express.js, MongoDB, PostgreSQL, Firebase Auth   |
+| Discipline                           | Notable Projects                                          | Core Technologies                                         |
+| :----------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------- |
+| **Artificial Intelligence & EdTech** | BodhAI, AI Proctoring Engine, Smart Assessment Platform   | Python, React.js, Firebase, OpenCV, AI Automation         |
+| **Full Stack Web Engineering**       | Personal Portfolio v2, E-Commerce Portals, SaaS Platforms | Next.js 16, React 19, TypeScript, Tailwind CSS v4, Convex |
+| **Backend & Cloud Architecture**     | Microservice APIs, User Analytics Engine, Data Pipelines  | Node.js, Express.js, MongoDB, PostgreSQL, Firebase Auth   |
 | **UI/UX & Interactive Design**       | 3D Carousel Stage, Cyber Terminal Loader, Design Systems  | Framer Motion, Tailwind CSS, Figma                        |
 
 ---

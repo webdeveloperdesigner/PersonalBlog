@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import NoticeBanner from './NoticeBanner';
-import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit } from 'lucide-react';
+import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit, Bot } from 'lucide-react';
 
 const navLinks = [
   { name: '1.0 HOME', href: '/#hero' },
@@ -18,6 +18,7 @@ const navLinks = [
 ];
 
 const exploreItems = [
+  { name: 'Digital Twin [AI]', desc: 'Chat with custom AI portfolio agent', href: '/digital-twin', icon: <Bot className="w-4 h-4 text-purple-400" />, badge: 'COMING SOON' },
   { name: 'Case Studies', desc: 'Engineering breakdowns & architecture', href: '/case-studies', icon: <Sparkles className="w-4 h-4 text-amber-500" /> },
   { name: 'Gallery Showcase', desc: 'Visual UI & design artifacts', href: '/gallery', icon: <LayoutGrid className="w-4 h-4 text-purple-400" /> },
   { name: 'Career Timeline', desc: 'Milestones & professional growth', href: '/timeline', icon: <Layers className="w-4 h-4 text-emerald-400" /> },
@@ -169,10 +170,17 @@ export default function Navbar() {
                         <div className="p-2 rounded-lg bg-black/5 dark:bg-white/10 group-hover/item:bg-primary/10 transition-colors shrink-0">
                           {item.icon}
                         </div>
-                        <div className="flex flex-col">
-                          <span className="font-sans font-bold text-xs text-gray-900 dark:text-white group-hover/item:text-primary transition-colors">
-                            {item.name}
-                          </span>
+                        <div className="flex flex-col flex-1">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="font-sans font-bold text-xs text-gray-900 dark:text-white group-hover/item:text-primary transition-colors">
+                              {item.name}
+                            </span>
+                            {item.badge && (
+                              <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/30 font-mono text-[9px] font-bold tracking-wider uppercase">
+                                {item.badge}
+                              </span>
+                            )}
+                          </div>
                           <span className="font-sans text-[10px] text-gray-500 dark:text-gray-400 leading-tight mt-0.5">
                             {item.desc}
                           </span>
@@ -295,7 +303,13 @@ export default function Navbar() {
                             </div>
                             <span className="font-sans font-bold text-xs text-foreground group-hover:text-primary transition-colors">{item.name}</span>
                           </div>
-                          <span className="font-mono text-xs text-primary font-bold">→</span>
+                          {item.badge ? (
+                            <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/30 font-mono text-[9px] font-bold tracking-wider uppercase">
+                              {item.badge}
+                            </span>
+                          ) : (
+                            <span className="font-mono text-xs text-primary font-bold">→</span>
+                          )}
                         </Link>
                       ))}
                     </motion.div>

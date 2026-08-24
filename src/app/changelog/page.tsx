@@ -37,11 +37,28 @@ interface Release {
 
 const releasesData: Release[] = [
   {
-    version: 'v2.5.0',
-    date: '23 AUG 2026',
+    version: 'v2.6.0',
+    date: '24 AUG 2026',
     year: '2026',
     statusBadge: 'CURRENT RELEASE',
     badgeColor: 'bg-[#FF7029] text-white',
+    title: '3D Core Capabilities, GitHub Heatmap & Digital Twin AI Preview',
+    summary: 'Interactive 3D horizontal capabilities stage, scroll velocity kinetic marquee, GitHub heatmap contribution card, /tech route, and Digital Twin AI Agent announcement.',
+    tags: ['FEATURE', 'ARCHITECTURE', 'UX', 'PERFORMANCE'],
+    commitUrl: 'https://github.com/webdeveloperdesigner/PersonalBlog/commits/main',
+    changes: [
+      { id: '01', title: 'Digital Twin AI Agent (Coming Soon)', category: 'FEATURE', desc: "Custom AI agent trained on complete portfolio, skills, and work history for instant context-aware engineering queries." },
+      { id: '02', title: '3D Capabilities Stage & Kinetic Marquee (/core)', category: 'ARCHITECTURE', desc: 'Interactive 3D horizontal perspective carousel stage with infinite scroll marquee banner.' },
+      { id: '03', title: 'GitHub Heatmap Contribution Matrix & Tech Matrix (/tech)', category: 'FEATURE', desc: 'Theme-adaptive GitHub contribution matrix card powered by custom API proxy endpoints.' },
+      { id: '04', title: 'README & Documentation Synchronizations', category: 'UX', desc: 'Comprehensive repository documentation update reflecting all 19 App Router subdirectories and 23 component modules.' }
+    ]
+  },
+  {
+    version: 'v2.5.0',
+    date: '23 AUG 2026',
+    year: '2026',
+    statusBadge: 'STABLE RELEASE',
+    badgeColor: 'bg-emerald-500 text-white',
     title: 'Executive Experience Timeline Architecture',
     summary: 'Executive timeline system, smooth anchor navigation engine, glassmorphic sticky header, responsive development notice, and live status release infrastructure.',
     tags: ['FEATURE', 'ARCHITECTURE', 'UX', 'MOBILE'],

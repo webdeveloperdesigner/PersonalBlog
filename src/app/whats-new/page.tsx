@@ -14,7 +14,37 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const whatsNewItems = [
   {
+    id: '00',
+    badge: 'COMING SOON',
+    badgeColor: 'bg-purple-600 text-white',
+    title: 'Chat with my Digital Twin',
+    date: 'Upcoming Feature',
+    desc: "Don't want to read through a traditional resume? I've trained a custom AI agent on my complete portfolio, skills, and work history. Get instant, context-aware answers about my engineering background.",
+    tags: ['AI Agent', 'Digital Twin', 'Portfolio RAG', 'GenAI'],
+    link: '#'
+  },
+  {
     id: '01',
+    badge: 'NEW ROUTE',
+    badgeColor: 'bg-cyan-500 text-white',
+    title: '3D Core Capabilities & Kinetic Marquee (/core)',
+    date: 'August 24, 2026',
+    desc: 'Interactive 3D horizontal perspective carousel stage paired with an infinite kinetic velocity marquee banner ("CREATIVE ✦ ENGINEERING") featuring webkit stroke text effects.',
+    tags: ['3D Stage', 'Framer Motion', 'Marquee', 'Core Capabilities'],
+    link: '/core'
+  },
+  {
+    id: '02',
+    badge: 'LIVE WIDGET',
+    badgeColor: 'bg-[#FF7029] text-white',
+    title: 'GitHub Real-Time Contribution Heatmap & Tech Matrix (/tech)',
+    date: 'August 24, 2026',
+    desc: 'Real-time theme-adaptive GitHub commit contribution matrix widget integrated with backend API proxies, alongside an interactive skills and tools matrix.',
+    tags: ['GitHub Heatmap', 'Tech Stack', 'API Proxy', 'Widgets'],
+    link: '/tech'
+  },
+  {
+    id: '03',
     badge: 'LIVE NOW',
     badgeColor: 'bg-[#FF7029] text-white',
     title: 'Executive Experience Timeline Architecture',
@@ -24,7 +54,7 @@ const whatsNewItems = [
     link: '/#experience'
   },
   {
-    id: '02',
+    id: '04',
     badge: 'ARCHITECTURE',
     badgeColor: 'bg-emerald-500 text-white',
     title: 'Full-Site Smooth Anchor Scroll Engine',
@@ -34,7 +64,7 @@ const whatsNewItems = [
     link: '/#projects'
   },
   {
-    id: '03',
+    id: '05',
     badge: 'ENGINEERING LOG',
     badgeColor: 'bg-purple-500 text-white',
     title: 'GitHub-Style Engineering Release Log (/changelog)',
@@ -44,7 +74,7 @@ const whatsNewItems = [
     link: '/changelog'
   },
   {
-    id: '04',
+    id: '06',
     badge: 'FEATURED PROJECT',
     badgeColor: 'bg-blue-500 text-white',
     title: 'BodhAI — AI-Powered Learning Practice Platform',
@@ -54,7 +84,7 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/BodhAI'
   },
   {
-    id: '05',
+    id: '07',
     badge: 'HEALTHCARE AI',
     badgeColor: 'bg-cyan-500 text-white',
     title: 'AI Healthcare Chatbot',
@@ -64,7 +94,7 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-'
   },
   {
-    id: '06',
+    id: '08',
     badge: '2026 EDITION',
     badgeColor: 'bg-amber-500 text-white',
     title: 'Veda Resume — Smart ATS Optimization Engine',
@@ -74,7 +104,7 @@ const whatsNewItems = [
     link: 'https://github.com/webdeveloperdesigner/veda-resume'
   },
   {
-    id: '07',
+    id: '09',
     badge: 'MOBILE OPTIMIZATION',
     badgeColor: 'bg-teal-500 text-white',
     title: 'Responsive Development Notice Banner',
@@ -84,7 +114,7 @@ const whatsNewItems = [
     link: '/'
   },
   {
-    id: '08',
+    id: '10',
     badge: 'NAV & THEME',
     badgeColor: 'bg-indigo-500 text-white',
     title: 'Glassmorphic Sticky Header & Theme Engine',
@@ -94,7 +124,7 @@ const whatsNewItems = [
     link: '/'
   },
   {
-    id: '09',
+    id: '11',
     badge: 'SYSTEM FOOTER',
     badgeColor: 'bg-rose-500 text-white',
     title: 'Global System Footer Integration',
