@@ -29,7 +29,7 @@
 
 ## Executive Summary
 
-A production-grade, highly interactive portfolio application engineered to showcase technical expertise across Full Stack Web Development, Artificial Intelligence, and Modern EdTech Systems. Moving beyond traditional static documentation, this platform delivers an immersive, high-performance user experience powered by Next.js 16 (Turbopack), React 19, Framer Motion choreographies, custom matrix rain terminal loaders, and responsive theme-adaptive design systems.
+A production-grade, highly interactive portfolio application engineered to showcase technical expertise across Full Stack Web Development, Artificial Intelligence, and Modern EdTech Systems. Moving beyond traditional static documentation, this platform delivers an immersive, high-performance user experience powered by Next.js 16 (Turbopack), React 19, Framer Motion choreographies, custom matrix rain terminal loaders, 3D interactive carousels, and responsive theme-adaptive design systems.
 
 ---
 
@@ -44,12 +44,16 @@ The repository is built on a modern, decoupled architecture designed for maximal
 
 ### UI Choreography & Animations
 
+- **3D Horizontal Carousel & Velocity Marquee:** Infinite 3D capability stage carousel with active center focal cards and custom scroll velocity marquee (`TextScrollMarquee.tsx`).
 - **Framer Motion:** Drives complex timeline choreographies, interactive tilt card mechanics, page transitions, and smooth scroll behaviors.
 - **Tailwind CSS v4 & custom variants:** Implements `@custom-variant dark (&:where(.dark, .dark *));` to ensure 100% synchronized Light & Dark mode transitions.
 - **Lucide Icons:** Provides crisp, accessible SVG icon primitives across desktop navigation pills and mobile accordion drawers.
 
 ### System Features & Engines
 
+- **Core Capabilities Engine (`/core`):** Interactive 3D card perspective stage featuring infinite marquee scrolling banner ("CREATIVE ✦ ENGINEERING") and dynamic capability categories.
+- **Tech Stack Showcase (`/tech`):** Comprehensive technical skills matrix, toolings, frameworks, and architecture overview.
+- **GitHub Contribution Matrix (`GitHubHeatmapCard.tsx`):** Real-time GitHub commit heatmap card integrated with custom `/api` proxies.
 - **Cyber Matrix Terminal Loader:** Generates a real-time Katakana & Latin rain canvas animation during initial system boot (`PageLoader.tsx`), persisting state in `sessionStorage` for zero-lag subsequent navigation.
 - **Interactive Presentation Deck (`/me`):** A slide-based pitch presentation featuring keyboard (`↑` / `↓`) and wheel scroll navigation.
 - **Technical Blog Engine (`/writings`):** MDX and custom dataset rendering for deep-dive engineering experiences (e.g., Shaastra 2026 @ IIT Madras, MLOps deployments, and Blockchain architectures).
@@ -62,14 +66,20 @@ The repository is built on a modern, decoupled architecture designed for maximal
 v2-portfolio/
 ├── src/
 │   ├── app/                          # Next.js 16 App Router Routes
+│   │   ├── api/                      # Backend API Proxy Routes (GitHub data, etc.)
 │   │   ├── case-studies/             # Deep-Dive Engineering Case Studies
+│   │   ├── changelog/                # Detailed Version History & Release Notes
+│   │   ├── core/                     # Core Capabilities & 3D Carousel Page
 │   │   ├── gallery/                  # Visual UI & Design Artifacts Showcase
 │   │   ├── me/                       # Interactive Slide Deck Presentation
 │   │   ├── projects/                 # Comprehensive Projects Directory & Archive
+│   │   ├── sitemap/                  # Dynamic Visual Sitemap & Route Index
+│   │   ├── tech/                     # Tech Stack & Skills Proficiency Matrix
 │   │   ├── timeline/                 # Chronological Career Milestones
+│   │   ├── whats-new/                # Highlights of Latest Portfolio Upgrades
 │   │   └── writings/                 # Technical Blog & Articles Engine
 │   ├── components/
-│   │   ├── Navbar.tsx                # Floating Navigation Pill with Explore Dropdown
+│   │   ├── Navbar.tsx                # Floating Navigation Pill with 6.0 Explore Dropdown
 │   │   ├── Hero.tsx                  # Interactive Hero Section & Tech Stack Badge Grid
 │   │   ├── Projects.tsx              # Featured Project Showcase & Filter Tabs
 │   │   ├── ProjectCard.tsx           # Adaptive Project Card Component
@@ -79,7 +89,11 @@ v2-portfolio/
 │   │   ├── About.tsx                 # Core Philosophy & Background Summary
 │   │   ├── Contact.tsx               # Floating Label Contact Form with High-Contrast CTA
 │   │   ├── PageLoader.tsx            # Cyber Terminal Boot Screen
-│   │   └── TiltCard.tsx              # 3D Gyroscope & Spotlight Tilt Container
+│   │   ├── NoticeBanner.tsx          # Real-Time System Announcement Pill
+│   │   └── ui/
+│   │       ├── GitHubHeatmapCard.tsx # GitHub Contribution Heatmap Widget
+│   │       ├── TextScrollMarquee.tsx # Infinite Scroll Velocity Marquee
+│   │       └── TiltCard.tsx          # 3D Gyroscope & Spotlight Tilt Container
 │   └── data/
 │       ├── caseStudies.ts            # Architectural Case Studies Database
 │       ├── projects.ts               # Project Repositories & Demos Store
@@ -93,21 +107,25 @@ v2-portfolio/
 
 ## Key Features
 
-### 1. 6.0 Explore Dropdown & Mobile Accordion
+### 1. 3D Capabilities Stage & Kinetic Marquee (`/core`)
 
-Includes a floating desktop navigation pill (`6.0 EXPLORE ▾`) with smooth Framer Motion animations and an interactive mobile drawer accordion featuring quick links to Case Studies, Gallery, Timeline, About Presentation, and Projects Archive.
+Features a 3D perspective horizontal carousel where cards rotate and transform on interaction, paired with an infinite velocity scroll marquee displaying stroke-outlined and solid typography separated by glowing vector sparkles.
 
-### 2. Autonomous Cyber Matrix Loader
+### 2. 6.0 Explore Dropdown & Mobile Accordion
+
+Includes a floating desktop navigation pill (`6.0 EXPLORE ▾`) with smooth Framer Motion animations and an interactive mobile drawer accordion featuring quick links to Core Capabilities, Tech Stack, Case Studies, Gallery, Timeline, About Presentation, and Projects Archive.
+
+### 3. Real-Time GitHub Contribution Heatmap (`GitHubHeatmapCard`)
+
+Features a custom light/dark theme-adapted GitHub commit contribution matrix widget dynamically fetching user activity logs.
+
+### 4. Autonomous Cyber Matrix Loader
 
 Features a matrix code rain canvas simulator executing system kernel initialization steps (`[SYS_INIT] INITIALIZING KERNEL v2.4...`) with automatic session caching (`sessionStorage`).
 
-### 3. Interactive Pitch Deck (`/me`)
+### 5. Interactive Pitch Deck (`/me`)
 
 Delivers a slide presentation built with React state & Framer Motion `AnimatePresence`, supporting keyboard arrow navigation and mouse wheel scrolling to present mission, tech stack, and flagship product (**BodhAI**).
-
-### 4. Floating-Label Form & Dual-Theme Adaptation
-
-Includes a contact form with floating labels (`peer-[:not(:placeholder-shown)]:-top-3`), zero placeholder overlap, and high-contrast Light/Dark mode themes tested across all 17 static and dynamic Next.js routes.
 
 ---
 
@@ -160,7 +178,7 @@ The platform documents technical projects and products spanning multiple softwar
 | **Artificial Intelligence & EdTech** | BodhAI, AI Proctoring Engine, Smart Assessment Platform    | Python, React.js, Firebase, OpenCV, AI Automation         |
 | **Full Stack Web Engineering**       | Personal Portfolio v2, E-Commerce Portals, SaaS Platforms  | Next.js 16, React 19, TypeScript, Tailwind CSS v4, Convex |
 | **Backend & Cloud Architecture**     | Microservice APIs, User Analytics Engine, Data Pipelines   | Node.js, Express.js, MongoDB, PostgreSQL, Firebase Auth   |
-| **UI/UX & Interactive Design**       | 3D Tilt Card System, Cyber Terminal Loader, Design Systems | Framer Motion, Tailwind CSS, Figma                        |
+| **UI/UX & Interactive Design**       | 3D Carousel Stage, Cyber Terminal Loader, Design Systems  | Framer Motion, Tailwind CSS, Figma                        |
 
 ---
 
@@ -169,5 +187,5 @@ The platform documents technical projects and products spanning multiple softwar
 This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
-  <p>Engineered by Vivek </p>
+  <p>Engineered by Vivek</p>
 </div>
