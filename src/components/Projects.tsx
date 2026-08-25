@@ -14,8 +14,21 @@ if (typeof window !== 'undefined') {
 const projects = [
   { 
     id: "01/03", 
+    year: "2026", 
+    category: "GenAI / EdTech", 
+    projectType: "Personal Project",
+    title: "Veda Resume", 
+    desc: "AI-powered smart resume builder, ATS analyzer, and optimization engine", 
+    tags: ["Next.js", "TypeScript", "Tailwind", "AI"], 
+    url: "https://github.com/webdeveloperdesigner/veda-resume", 
+    pattern: "lines", 
+    color: "#a855f7" 
+  },
+  { 
+    id: "02/03", 
     year: "2025", 
     category: "AI / EdTech", 
+    projectType: "Personal Project",
     title: "BodhAI", 
     desc: "AI-powered learning practice platform with smart MCQs and coding quizzes", 
     tags: ["React", "Firebase", "Tailwind", "AI"], 
@@ -24,26 +37,16 @@ const projects = [
     color: "#FF7029" 
   },
   { 
-    id: "02/03", 
+    id: "03/03", 
     year: "2024", 
     category: "Healthcare / AI", 
+    projectType: "College Group Project",
     title: "AI Healthcare Chatbot", 
     desc: "Healthcare chatbot website for user-friendly medical assistance and diagnosis", 
     tags: ["React", "JavaScript", "AI", "Node.js"], 
     url: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-", 
     pattern: "circles", 
     color: "#38bdf8" 
-  },
-  { 
-    id: "03/03", 
-    year: "2026", 
-    category: "GenAI / EdTech", 
-    title: "Veda Resume", 
-    desc: "AI-powered smart resume builder, ATS analyzer, and optimization engine", 
-    tags: ["Next.js", "TypeScript", "Tailwind", "AI"], 
-    url: "https://github.com/webdeveloperdesigner/veda-resume", 
-    pattern: "lines", 
-    color: "#a855f7" 
   },
 ];
 

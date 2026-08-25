@@ -206,15 +206,27 @@ export default function Hero() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Link href="/#projects" className="flex items-center gap-2 bg-foreground text-background font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-gray-300 transition-colors group">
-                VIEW MY WORK 
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link 
+                href="/#projects" 
+                className="inline-flex items-center gap-3 bg-[#FF7029] hover:bg-[#E65F1E] text-white font-mono font-bold text-xs px-8 py-4 rounded-full uppercase tracking-widest transition-all duration-300 shadow-lg shadow-[#FF7029]/25 hover:shadow-xl hover:shadow-[#FF7029]/40 hover:scale-[1.03] active:scale-[0.98] group"
+              >
+                <span>VIEW MY WORK</span> 
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
               </Link>
-              <Link href="/#contact" className="flex items-center gap-2 border border-foreground/20 text-foreground font-black text-xs px-8 py-4 uppercase tracking-widest hover:bg-foreground/5 transition-colors">
-                LET'S TALK
+              <Link 
+                href="/#contact" 
+                className="inline-flex items-center gap-2 border border-foreground/20 bg-foreground/5 hover:bg-foreground/10 text-foreground font-mono font-bold text-xs px-8 py-4 rounded-full uppercase tracking-widest transition-all duration-300 backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98]"
+              >
+                LET&apos;S TALK
               </Link>
-              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors ml-4 font-mono text-xs uppercase tracking-widest font-bold">
-                <Download className="w-4 h-4" /> CV
+              <a 
+                href="/cv.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-2 text-foreground/70 hover:text-[#FF7029] transition-colors ml-2 sm:ml-4 font-mono text-xs uppercase tracking-widest font-bold px-4 py-3 rounded-full hover:bg-foreground/5"
+              >
+                <Download className="w-4 h-4 text-[#FF7029]" /> 
+                <span>DOWNLOAD CV</span>
               </a>
             </div>
 
