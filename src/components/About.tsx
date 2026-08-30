@@ -25,16 +25,16 @@ function Counter({ from, to, suffix }: { from: number, to: number, suffix: strin
 
   useEffect(() => {
     if (isInView) {
-      let start = from;
-      const duration = 2000;
+      const duration = 1000; // 1 second smooth animation
       const startTime = performance.now();
 
       const animate = (currentTime: number) => {
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         
-        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-        setCount(Math.floor(easeProgress * (to - from) + from));
+        // Linear step interpolation for even count progression
+        const currentVal = Math.round(from + progress * (to - from));
+        setCount(currentVal);
 
         if (progress < 1) {
           requestAnimationFrame(animate);

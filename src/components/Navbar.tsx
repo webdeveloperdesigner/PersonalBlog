@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import NoticeBanner from './NoticeBanner';
-import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit, Bot } from 'lucide-react';
+import { ChevronDown, Sparkles, LayoutGrid, Layers, UserCheck, FileCode2, GitCommit, Bot, Bell, Cpu } from 'lucide-react';
 
 const navLinks = [
   { name: '1.0 HOME', href: '/#hero' },

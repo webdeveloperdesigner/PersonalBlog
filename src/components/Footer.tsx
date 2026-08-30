@@ -2,12 +2,18 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUp } from 'lucide-react';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Footer() {
   const wordmarkRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!wordmarkRef.current) return;
     gsap.fromTo(
       wordmarkRef.current,
       { y: 150, opacity: 0 },

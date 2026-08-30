@@ -11,43 +11,87 @@ const caseStudiesData: Record<string, any> = {
   'bodhai': {
     title: "BodhAI",
     subtitle: "AI-powered learning and assessment platform with intelligent analytics.",
-    year: "2024",
-    status: "Live",
+    year: "2025 - 2026",
+    status: "Live Production",
     heroImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&auto=format&fit=crop&q=80",
-    overview: "BodhAI is a comprehensive learning and assessment platform designed to scale the capabilities of educators and students alike. It leverages AI to generate smart mock tests, evaluate coding assignments, and provide deep analytical insights into student performance.",
-    challenge: "The primary challenge was building a scalable infrastructure capable of handling concurrent real-time assessments while seamlessly integrating AI evaluation APIs without causing significant latency for the end-user.",
-    solution: "We engineered a robust frontend architecture using React and Tailwind CSS, coupled with Firebase for real-time data synchronization. The AI evaluation was offloaded to optimized edge functions to ensure immediate feedback.",
+    overview: "BodhAI is a personal project designed as a learning & MCQ practice platform. It leverages AI to generate smart mock tests, evaluate coding assignments, and provide deep analytical insights into student performance.",
+    challenge: "Building a scalable infrastructure capable of handling real-time assessments while integrating AI evaluation APIs without causing latency.",
+    solution: "Engineered a robust frontend architecture using React, Tailwind CSS, and Firebase for real-time data synchronization.",
     results: [
-      "Successfully onboarded over 1,000+ active users.",
-      "Reduced assessment evaluation time by 85%.",
-      "Achieved a 99.9% uptime during peak examination hours."
+      "Successfully deployed interactive quiz & coding assessment engine.",
+      "Offloaded evaluation to optimized serverless functions.",
+      "Maintained zero-downtime reliability during practice sessions."
     ],
     techStack: {
       languages: ["JavaScript", "TypeScript", "HTML/CSS"],
       frameworks: ["React", "Next.js", "Tailwind CSS"],
       tools: ["Firebase", "OpenAI API", "Git"]
     },
-    liveLink: "#",
-    sourceLink: "#"
+    liveLink: "https://github.com/webdeveloperdesigner/BodhAI",
+    sourceLink: "https://github.com/webdeveloperdesigner/BodhAI"
+  },
+  'healthcare-chatbot': {
+    title: "AI Healthcare Chatbot",
+    subtitle: "Intelligent medical assistance website for preliminary symptom analysis and guidance.",
+    year: "2024",
+    status: "College Group Project",
+    heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&auto=format&fit=crop&q=80",
+    overview: "AI Healthcare Chatbot is a college group project built to assist users with preliminary medical inquiries, symptom checks, and doctor referral guidance.",
+    challenge: "Ensuring responsive conversational flow and secure data handling while connecting Python AI backend services to a clean user interface.",
+    solution: "Designed a user-friendly React frontend connected to Python healthcare NLP services via REST APIs.",
+    results: [
+      "Built responsive medical symptom evaluation interface.",
+      "Collaborated in a team of developers for college project delivery.",
+      "Published open-source repository on GitHub."
+    ],
+    techStack: {
+      languages: ["Python", "JavaScript", "HTML/CSS"],
+      frameworks: ["React", "Flask / FastAPI", "Tailwind CSS"],
+      tools: ["REST API", "GitHub", "Python NLP"]
+    },
+    liveLink: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-",
+    sourceLink: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-"
+  },
+  'healthcare': {
+    title: "AI Healthcare Chatbot",
+    subtitle: "Intelligent medical assistance website for preliminary symptom analysis and guidance.",
+    year: "2024",
+    status: "College Group Project",
+    heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&auto=format&fit=crop&q=80",
+    overview: "AI Healthcare Chatbot is a college group project built to assist users with preliminary medical inquiries, symptom checks, and doctor referral guidance.",
+    challenge: "Ensuring responsive conversational flow and secure data handling while connecting Python AI backend services to a clean user interface.",
+    solution: "Designed a user-friendly React frontend connected to Python healthcare NLP services via REST APIs.",
+    results: [
+      "Built responsive medical symptom evaluation interface.",
+      "Collaborated in a team of developers for college project delivery.",
+      "Published open-source repository on GitHub."
+    ],
+    techStack: {
+      languages: ["Python", "JavaScript", "HTML/CSS"],
+      frameworks: ["React", "Flask / FastAPI", "Tailwind CSS"],
+      tools: ["REST API", "GitHub", "Python NLP"]
+    },
+    liveLink: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-",
+    sourceLink: "https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-"
   },
   'portfolio': {
     title: "Cinematic Portfolio",
     subtitle: "A premium, 3D-integrated personal portfolio demonstrating modern UI/UX.",
-    year: "2025",
-    status: "Live",
+    year: "2026",
+    status: "Live Production",
     heroImage: "https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?w=1600&auto=format&fit=crop&q=80",
     overview: "This portfolio was designed to push the boundaries of standard web presentation, creating an immersive, cinematic experience inspired by industrial and digital workshop aesthetics.",
-    challenge: "Integrating high-performance WebGL and complex GSAP scroll animations without degrading the Lighthouse performance score or causing layout jank on mobile devices.",
-    solution: "Utilized Next.js 14 App Router for static generation, and carefully dynamically imported heavy Three.js components. Animations were hardware-accelerated and scroll-triggers were optimized for mobile.",
+    challenge: "Integrating high-performance WebGL and complex GSAP scroll animations without degrading performance or causing layout jank.",
+    solution: "Utilized Next.js 15 App Router for static & server generation, and dynamically imported heavy 3D components. Animations were hardware-accelerated and scroll-triggers optimized.",
     results: [
-      "Achieved a 98+ Lighthouse Performance Score.",
-      "Seamless 60fps animations across all tested devices.",
-      "Created a highly reusable and modular component architecture."
+      "Achieved high Lighthouse Performance & Accessibility Scores.",
+      "Seamless 60fps animations across tested viewports.",
+      "Created a highly modular component architecture."
     ],
     techStack: {
-      languages: ["TypeScript", "GLSL"],
-      frameworks: ["Next.js", "Three.js", "Tailwind CSS", "Framer Motion"],
-      tools: ["Vercel", "GSAP", "Lenis"]
+      languages: ["TypeScript", "JavaScript"],
+      frameworks: ["Next.js 15", "React 19", "Tailwind CSS v4", "Framer Motion"],
+      tools: ["Vercel", "GSAP", "GitHub API"]
     },
     liveLink: "#",
     sourceLink: "#"

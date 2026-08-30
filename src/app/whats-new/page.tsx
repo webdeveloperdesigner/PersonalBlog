@@ -14,14 +14,44 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const whatsNewItems = [
   {
-    id: '00',
-    badge: 'COMING SOON',
+    id: '00A',
+    badge: 'v2.7.0 RELEASE',
+    badgeColor: 'bg-[#FF7029] text-white',
+    title: 'Single-Source-Of-Truth GitHub Telemetry Engine & Live Heatmap',
+    date: 'August 30, 2026',
+    desc: 'Server backend 365 calendar days normalization engine (/api/stats), auto-updating 2025-2026 rolling year range, live active browser session timer, and dynamic session token generator.',
+    tags: ['GitHub Telemetry', 'API Proxy', 'Session Timer', 'Year Range'],
+    link: '/tech'
+  },
+  {
+    id: '00B',
+    badge: 'STEALTH & BADGES',
+    badgeColor: 'bg-emerald-500 text-white',
+    title: 'Stealth Blurred Project & Personal / Group Badges (/projects)',
+    date: 'August 30, 2026',
+    desc: 'Added explicit Personal Project vs Group Project badges with Lucide icons, year-ordered project grouping (2026 first), and a blurred lock stealth project preview.',
+    tags: ['Projects', 'Personal Project', 'Group Project', 'Stealth Lock'],
+    link: '/projects'
+  },
+  {
+    id: '00C',
+    badge: 'SYSTEM ROUTES',
+    badgeColor: 'bg-blue-600 text-white',
+    title: 'System Version Dashboard (/version) & Release Updates Stream (/updates)',
+    date: 'August 30, 2026',
+    desc: 'Launched comprehensive System Version dashboard highlighting runtime tech stack specifications, active routes index, and live system updates stream.',
+    tags: ['Version Dashboard', 'System Updates', 'Tech Stack', 'Routes Index'],
+    link: '/version'
+  },
+  {
+    id: '00D',
+    badge: 'DIGITAL TWIN AI',
     badgeColor: 'bg-purple-600 text-white',
-    title: 'Chat with my Digital Twin',
-    date: 'Upcoming Feature',
-    desc: "Don't want to read through a traditional resume? I've trained a custom AI agent on my complete portfolio, skills, and work history. Get instant, context-aware answers about my engineering background.",
+    title: 'Chat with my Digital Twin AI Agent (/digital-twin)',
+    date: 'August 30, 2026',
+    desc: "Don't want to read through a traditional resume? Interactive preview of my custom AI agent trained on complete portfolio, skills, and work history for context-aware queries.",
     tags: ['AI Agent', 'Digital Twin', 'Portfolio RAG', 'GenAI'],
-    link: '#'
+    link: '/digital-twin'
   },
   {
     id: '01',

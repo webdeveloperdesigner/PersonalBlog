@@ -7,9 +7,9 @@ const allProjects = [
     year: "2026", 
     category: "Stealth / AI Systems", 
     type: "Personal Project",
-    title: "Stealth AI Agent Platform", 
-    desc: "Next-gen autonomous multi-agent platform for real-time code analysis & RAG execution", 
-    tags: ["GenAI", "Python", "LLMs", "RAG"], 
+    title: "heee hee", 
+    desc: "Next-gen autonomous multi-agent platform for real-time Authentication", 
+    tags: ["Authentication", "OAuth", "RAG"], 
     url: "#",
     isBlurred: true
   },

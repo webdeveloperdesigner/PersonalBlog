@@ -37,11 +37,28 @@ interface Release {
 
 const releasesData: Release[] = [
   {
-    version: 'v2.6.0',
-    date: '24 AUG 2026',
+    version: 'v2.7.0',
+    date: '30 AUG 2026',
     year: '2026',
     statusBadge: 'CURRENT RELEASE',
     badgeColor: 'bg-[#FF7029] text-white',
+    title: 'Single-Source-of-Truth GitHub Telemetry, Stealth Project & System Routes',
+    summary: 'Single-Source-of-Truth GitHub telemetry server backend (/api/stats), 365 calendar days normalization engine, dynamic rolling year range (2025 - 2026), active browser session timer, dynamic session token generator, blurred stealth project, personal vs group badges, /version dashboard, and /updates stream.',
+    tags: ['FEATURE', 'ARCHITECTURE', 'UX', 'PERFORMANCE'],
+    commitUrl: 'https://github.com/webdeveloperdesigner/PersonalBlog/commits/main',
+    changes: [
+      { id: '01', title: 'Single-Source-Of-Truth GitHub Telemetry Engine (/api/stats)', category: 'ARCHITECTURE', desc: 'Server backend 365 calendar days normalization engine calculating 365 rolling days sum, peak activity, and dynamic start/end year range.' },
+      { id: '02', title: 'Live Browser Session Timer & Dynamic SESSION TOKEN', category: 'FEATURE', desc: 'Ticking active browser session timer and dynamic 8-character SESSION TOKEN generated per page load session.' },
+      { id: '03', title: 'Blurred Stealth Project & Personal / Group Badges (/projects)', category: 'UX', desc: 'Added Lucide icon badges distinguishing Personal Projects vs Group Projects, year-ordered sorting, and blurred stealth project preview.' },
+      { id: '04', title: 'System Version Dashboard & Updates Stream (/version & /updates)', category: 'FEATURE', desc: 'Launched dedicated system version specs dashboard and real-time system updates stream.' }
+    ]
+  },
+  {
+    version: 'v2.6.0',
+    date: '24 AUG 2026',
+    year: '2026',
+    statusBadge: 'STABLE RELEASE',
+    badgeColor: 'bg-emerald-500 text-white',
     title: '3D Core Capabilities, GitHub Heatmap & Digital Twin AI Preview',
     summary: 'Interactive 3D horizontal capabilities stage, scroll velocity kinetic marquee, GitHub heatmap contribution card, /tech route, and Digital Twin AI Agent announcement.',
     tags: ['FEATURE', 'ARCHITECTURE', 'UX', 'PERFORMANCE'],
