@@ -18,8 +18,8 @@ const techStack = [
 ];
 
 const systemMetrics = [
-  { label: 'SYSTEM VERSION', value: 'v2.7.0 (Stable)', desc: 'Production Release Architecture' },
-  { label: 'TELEMETRY ENGINE', value: '365 Calendar Days', desc: 'Single-Source /api/stats Proxy' },
+  { label: 'SYSTEM VERSION', value: 'v2.8.0 (Stable)', desc: 'Production Release Architecture' },
+  { label: 'TELEMETRY ENGINE', value: 'GitHub Bytes + 365 Days', desc: 'Single-Source /api/stats Proxy' },
   { label: 'ACTIVE ROUTES', value: '21 Subdirectories', desc: 'Next.js App Router Architecture' },
   { label: 'COMPONENT MODULES', value: '25 Custom Units', desc: 'High-Performance React UI' }
 ];

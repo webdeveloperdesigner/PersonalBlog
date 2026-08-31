@@ -37,11 +37,28 @@ interface Release {
 
 const releasesData: Release[] = [
   {
-    version: 'v2.7.0',
-    date: '30 AUG 2026',
+    version: 'v2.8.0',
+    date: '31 AUG 2026',
     year: '2026',
     statusBadge: 'CURRENT RELEASE',
     badgeColor: 'bg-[#FF7029] text-white',
+    title: 'GitHub Language Byte Aggregation Engine, Dual Theme SDE & Telemetry Sync',
+    summary: 'Exact GitHub repository language byte count aggregation (/repos/{owner}/{repo}/languages), uncapped scrollable TECH STACK IQ matrix, dual Light & Dark Mode SDE theme support for telemetry card, explicit GitHub data source labeling, and 1s step counter animation.',
+    tags: ['ARCHITECTURE', 'FEATURE', 'UX', 'THEME'],
+    commitUrl: 'https://github.com/webdeveloperdesigner/PersonalBlog/commits/main',
+    changes: [
+      { id: '01', title: 'GitHub Repository Language Byte Aggregation Engine', category: 'ARCHITECTURE', desc: 'Aggregates code byte counts across public repos via GitHub API to calculate true programming language usage percentages.' },
+      { id: '02', title: 'Dual Light & Dark Mode SDE Theme Engineering (/tech)', category: 'THEME', desc: 'Adaptive background variables, light mode GitHub grey contribution cells (neutral-100/200), and high-tech emerald refresh pill.' },
+      { id: '03', title: 'Explicit Data Source Legend Labeling', category: 'UX', desc: 'Replaced generic Less Activity text with explicit DATA SOURCE: GITHUB @WEBDEVELOPERDESIGNER legend label.' },
+      { id: '04', title: 'Optimized 1s Step Counter Animation (About Component)', category: 'PERFORMANCE', desc: 'Reduced counter duration to 1s with linear step interpolation for smooth counting (03 Live Projects, 02 Internships, 12+ Tools, 03 Certifications).' }
+    ]
+  },
+  {
+    version: 'v2.7.0',
+    date: '30 AUG 2026',
+    year: '2026',
+    statusBadge: 'STABLE RELEASE',
+    badgeColor: 'bg-emerald-500 text-white',
     title: 'Single-Source-of-Truth GitHub Telemetry, Stealth Project & System Routes',
     summary: 'Single-Source-of-Truth GitHub telemetry server backend (/api/stats), 365 calendar days normalization engine, dynamic rolling year range (2025 - 2026), active browser session timer, dynamic session token generator, blurred stealth project, personal vs group badges, /version dashboard, and /updates stream.',
     tags: ['FEATURE', 'ARCHITECTURE', 'UX', 'PERFORMANCE'],

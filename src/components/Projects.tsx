@@ -76,18 +76,22 @@ export default function Projects() {
 
       // 2. Horizontal Scroll Logic
       const getScrollAmount = () => {
-        const amount = container.scrollWidth - window.innerWidth;
+        const totalWidth = container.scrollWidth;
+        const viewWidth = window.innerWidth;
+        const extraOffset = window.innerWidth > 1024 ? 80 : 30;
+        const amount = totalWidth - viewWidth + extraOffset;
         return amount > 0 ? amount : 0;
       };
 
-      // Create the pinning scroll trigger unconditionally, but use dynamic values
+      // Create the pinning scroll trigger unconditionally with smooth damping
       gsap.to(container, {
         x: () => -getScrollAmount(),
         ease: "none",
         scrollTrigger: {
           trigger: pinSection,
           pin: true,
-          scrub: 1,
+          anticipatePin: 1,
+          scrub: 0.8,
           start: "top top",
           end: () => `+=${getScrollAmount()}`,
           invalidateOnRefresh: true,

@@ -11,11 +11,34 @@ import {
 
 const systemUpdates = [
   {
+    id: 'UPD-2026-0831',
+    version: 'v2.8.0',
+    date: '31 AUG 2026',
+    tag: 'RELEASE',
+    tagColor: 'bg-[#FF7029] text-white',
+    title: 'GitHub Language Byte Aggregation Engine & Dual Light/Dark Mode SDE Architecture',
+    summary: 'Integrated real-time repository byte count aggregation (/repos/{owner}/{repo}/languages), uncapped scrollable TECH STACK IQ matrix, dual Light & Dark Mode SDE theme support, explicit GitHub data source legend labeling, and 1s step counter animation.',
+    details: [
+      'Engineered GitHub Repository Languages Byte Aggregation API pipeline fetching /repos/{owner}/{repo}/languages',
+      'Calculated true code byte counts & percentages for pure programming languages (TypeScript, JavaScript, Python, Solidity, HTML, CSS)',
+      'Added uncapped scrollable list container for TECH STACK IQ matrix rendering all public repo languages',
+      'Engineered dual Light & Dark Mode theme support for /tech page and heatmap bento cards',
+      'Added light mode GitHub grey contribution cells (neutral-100/200) and high-tech emerald refresh pill button',
+      'Replaced Less Activity text with explicit DATA SOURCE: GITHUB @WEBDEVELOPERDESIGNER legend label',
+      'Optimized About page stats counter animation to 1s duration with linear step interpolation (03 Live Projects, 02 Internships, 12+ Tools, 03 Certifications)'
+    ],
+    links: [
+      { label: 'View Tech Heatmap', href: '/tech' },
+      { label: 'View Version Specs', href: '/version' },
+      { label: 'View Changelog', href: '/changelog' }
+    ]
+  },
+  {
     id: 'UPD-2026-0830',
     version: 'v2.7.0',
     date: '30 AUG 2026',
-    tag: 'RELEASE',
-    tagColor: 'bg-[#FF7029] text-white',
+    tag: 'STABLE',
+    tagColor: 'bg-emerald-500 text-white',
     title: 'Single-Source-of-Truth Telemetry Backend & Dynamic Year Ranges',
     summary: 'Refactored backend telemetry pipeline (/api/stats) to normalize 365 calendar days backwards from today, calculate dynamic rolling year ranges (2025 - 2026), live active browser session timer, and dynamic 8-character SESSION TOKEN generator per page load session.',
     details: [

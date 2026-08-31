@@ -14,9 +14,19 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const whatsNewItems = [
   {
+    id: '001',
+    badge: 'v2.8.0 RELEASE',
+    badgeColor: 'bg-[#FF7029] text-white',
+    title: 'GitHub Language Byte Aggregation Engine & Dual Light/Dark Mode SDE Architecture',
+    date: 'August 31, 2026',
+    desc: 'Real-time repository byte count aggregation (/repos/{owner}/{repo}/languages), uncapped scrollable TECH STACK IQ, seamless Light & Dark Mode rendering, and optimized counter animations.',
+    tags: ['GitHub Bytes API', 'Tech Stack IQ', 'Light/Dark Theme', 'SDE Architecture'],
+    link: '/tech'
+  },
+  {
     id: '00A',
     badge: 'v2.7.0 RELEASE',
-    badgeColor: 'bg-[#FF7029] text-white',
+    badgeColor: 'bg-emerald-500 text-white',
     title: 'Single-Source-Of-Truth GitHub Telemetry Engine & Live Heatmap',
     date: 'August 30, 2026',
     desc: 'Server backend 365 calendar days normalization engine (/api/stats), auto-updating 2025-2026 rolling year range, live active browser session timer, and dynamic session token generator.',

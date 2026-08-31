@@ -37,21 +37,6 @@ const experiences = [
     ],
     certUrl: "https://github.com/webdeveloperdesigner/PersonalBlog",
     certLabel: "View Experience Certificate"
-  },
-  {
-    id: 3,
-    role: "BodhAI — AI-Powered Learning Practice Platform",
-    subHead: "React, Firebase & Tailwind CSS Architecture",
-    company: "BODHAI PLATFORM",
-    date: "Jul - Sep 2025",
-    icon: <Sparkles className="w-5 h-5 text-[#FF7029]" />,
-    bullets: [
-      "Developed an AI-powered platform for adaptive multiple-choice quizzes and coding assessments with real-time feedback.",
-      "Implemented user analytics to track strengths, weaknesses, and suggest tailored learning paths.",
-      "Integrated Firebase-based admin tools for content management alongside a clean Tailwind CSS responsive interface."
-    ],
-    certUrl: "https://github.com/webdeveloperdesigner/BodhAI",
-    certLabel: "View Live Project / GitHub"
   }
 ];
 
@@ -84,6 +69,12 @@ const renderTechIcon = (tech: string) => {
     case "Expo": return <ChevronUp {...iconProps} className="w-6 h-6 text-foreground stroke-[3]" />;
     case "Convex": return <Database {...iconProps} className="w-6 h-6 text-amber-400" />;
     case "Mobile UI": case "Mobile": return <Layout {...iconProps} className="w-6 h-6 text-orange-500" />;
+    case "OpenAI": return <Sparkles {...iconProps} className="w-6 h-6 text-purple-400" />;
+    case "Python": return <FileCode {...iconProps} className="w-6 h-6 text-blue-400" />;
+    case "JSON": return <FileCode {...iconProps} className="w-6 h-6 text-yellow-400" />;
+    case "Docker": return <Hexagon {...iconProps} className="w-6 h-6 text-sky-500" />;
+    case "Figma": return <Layout {...iconProps} className="w-6 h-6 text-pink-500" />;
+    case "Jest": return <Sparkles {...iconProps} className="w-6 h-6 text-red-500" />;
     default: return <TerminalSquare {...iconProps} className="w-6 h-6 text-foreground/60" />;
   }
 };
@@ -94,7 +85,9 @@ const skills = [
   { id: "03", title: "BACKEND & APIS", badge: "SERVER SIDE", items: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "Postman"] },
   { id: "04", title: "DATABASE & ORM", badge: "DATA LAYER", items: ["MongoDB", "PostgreSQL", "SQL", "Prisma ORM", "Firebase"] },
   { id: "05", title: "CLOUD & DEVOPS", badge: "DEPLOYMENT", items: ["AWS", "Firebase", "Vercel", "Git", "Postman"] },
-  { id: "06", title: "MOBILE DEVELOPMENT", badge: "CROSS-PLATFORM", items: ["React Native", "Expo", "Convex", "Mobile UI", "Firebase"] }
+  { id: "06", title: "MOBILE DEVELOPMENT", badge: "CROSS-PLATFORM", items: ["React Native", "Expo", "Convex", "Mobile UI", "Firebase"] },
+  { id: "07", title: "AI & GENAI ENGINES", badge: "GEN AI", items: ["Python", "OpenAI", "REST APIs", "JSON", "Firebase"] },
+  { id: "08", title: "TOOLS & WORKFLOW", badge: "TOOLKIT", items: ["Git", "Docker", "Figma", "Postman", "Vercel"] }
 ];
 
 export default function ExperienceSkills() {
@@ -125,27 +118,27 @@ export default function ExperienceSkills() {
         </div>
 
         {/* 2-Column Grid Layout */}
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-12 xl:gap-20">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.15fr] gap-8 xl:gap-10 items-stretch">
           
           {/* LEFT COLUMN: EXPERIENCE */}
-          <div className="relative">
+          <div className="relative h-full flex flex-col">
             {/* Orange Timeline Line */}
-            <div className="absolute left-[11px] top-6 bottom-0 w-[2px] bg-gradient-to-b from-[#FF7029] to-[#FF7029]/10 z-0" />
+            <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-[#FF7029] via-[#FF7029]/60 to-[#FF7029]/20 z-0" />
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col justify-between h-full gap-5 flex-1">
               {experiences.map((exp) => (
                 <motion.div 
                   key={exp.id}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="relative pl-12"
+                  className="relative pl-10 flex-1 flex flex-col"
                 >
                   {/* Glowing Orange Dot */}
-                  <div className="absolute left-[4px] top-8 w-4 h-4 rounded-full bg-[#FF7029] z-10 shadow-[0_0_15px_rgba(255,112,41,0.8)]" />
+                  <div className="absolute left-[3px] top-6 w-4 h-4 rounded-full bg-[#FF7029] z-10 shadow-[0_0_15px_rgba(255,112,41,0.8)]" />
 
                   {/* Card */}
-                  <div className="bg-background border border-foreground/10 rounded-2xl p-6 md:p-8 hover:border-[#FF7029]/45 transition-all duration-300 flex flex-col gap-6">
+                  <div className="bg-background border border-foreground/10 rounded-2xl p-5 md:p-6 hover:border-[#FF7029]/45 transition-all duration-300 flex flex-col justify-between flex-1 gap-4">
                     
                     {/* Top Row: [LOGO] Company Name + Date Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground/10 pb-4">
@@ -211,8 +204,8 @@ export default function ExperienceSkills() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: SKILLS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-fit">
+          {/* RIGHT COLUMN: SKILLS (2 Cols x 3 Rows Grid) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 xl:gap-8 h-fit">
             {skills.map((skill, idx) => (
               <motion.div
                 key={skill.id}
@@ -220,7 +213,7 @@ export default function ExperienceSkills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-background border border-foreground/10 rounded-2xl p-6 relative overflow-hidden group hover:border-[#FF7029]/45 transition-colors duration-300"
+                className="bg-background border border-foreground/10 rounded-2xl p-6 md:p-7 relative overflow-hidden group hover:border-[#FF7029]/45 transition-colors duration-300 flex flex-col gap-6"
               >
                 {/* Subtle Faded Background Number */}
                 <div 
@@ -231,7 +224,7 @@ export default function ExperienceSkills() {
                 </div>
 
                 {/* Header */}
-                <div className="flex items-center justify-between mb-8 relative z-10">
+                <div className="flex items-center justify-between relative z-10">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#FF7029]" />
                     <h4 className="font-display text-sm tracking-wide text-foreground">{skill.title}</h4>
@@ -242,7 +235,7 @@ export default function ExperienceSkills() {
                 </div>
 
                 {/* Icons Grid */}
-                <div className="flex justify-between items-end relative z-10 w-full px-2">
+                <div className="flex justify-between items-end relative z-10 w-full px-2 pt-2">
                   {skill.items.map((item) => (
                     <div key={item} className="flex flex-col items-center gap-3">
                       <div className="w-8 h-8 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
