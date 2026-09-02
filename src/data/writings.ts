@@ -88,7 +88,7 @@ export const writingsData: Record<string, any> = {
     date: "October 10, 2023",
     readTime: "15 min",
     category: "Engineering",
-    heroImage: "https://images.unsplash.com/photo-1639762681485-074b7f4ec651?w=1600&auto=format&fit=crop&q=80",
+    heroImage: "/blockchain_architecture_hero.png",
     lead: "A deep dive into how to structure scalable, secure Web3 applications using modern smart contract design patterns and decentralized infrastructure.",
     
     highlights: [
@@ -101,7 +101,7 @@ export const writingsData: Record<string, any> = {
     sections: [
       {
         title: "Section 1: The Monolith vs. The Protocol",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&auto=format&fit=crop&q=80",
         content: `
           <p>Traditional web architecture relies heavily on central servers managing state and data. Moving to Web3 requires a fundamental shift in mindset: we are no longer building apps; we are building protocols.</p>
           <p>By decentralizing the logic into smart contracts, we eliminate single points of failure but introduce new challenges like permanent immutability and transparent state. Designing for this requires an 'upgradeable' mindset from day one.</p>
@@ -109,7 +109,7 @@ export const writingsData: Record<string, any> = {
       },
       {
         title: "Section 2: Smart Contract Security Patterns",
-        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop&q=80",
         content: `
           <p>In the blockchain world, a bug doesn't just mean downtime; it means stolen funds. Security cannot be an afterthought.</p>
           <p>We rely on standard patterns: Checks-Effects-Interactions to prevent re-entrancy attacks, utilizing well-audited libraries like OpenZeppelin, and implementing rigorous access controls. Writing secure solidity is an exercise in extreme paranoia.</p>
@@ -117,7 +117,7 @@ export const writingsData: Record<string, any> = {
       },
       {
         title: "Section 3: Decentralized Storage Solutions",
-        image: "https://images.unsplash.com/photo-1618060932014-4deda4932554?w=1200&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
         content: `
           <p>Storing a single megabyte on Ethereum can cost hundreds of dollars. For anything beyond financial state, decentralized storage is mandatory.</p>
           <p>We leverage networks like IPFS and Arweave. Integrating these into the dApp architecture means the frontend can pull assets directly from peer-to-peer networks, ensuring the application remains censorship-resistant even if the primary host goes down.</p>

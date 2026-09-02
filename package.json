@@ -1,12 +1,15 @@
 {
   "name": "v2-portfolio",
-  "version": "2.4.0",
+  "version": "2.8.1",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3005",
     "build": "next build",
     "start": "next start -p 3005",
     "lint": "eslint"
+  },
+  "overrides": {
+    "postcss": "^8.5.3"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -34,6 +37,7 @@
     "@types/three": "^0.184.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "postcss": "^8.5.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

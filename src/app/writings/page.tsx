@@ -1,3 +1,5 @@
+'use client';
+
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -31,8 +33,15 @@ export default function WritingsPage() {
                 <div className="absolute top-0 left-0 w-1 h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 z-10" />
                 
                 {/* Image Thumbnail */}
-                <div className="w-full md:w-1/3 aspect-[4/3] relative rounded-xl overflow-hidden shrink-0 border border-foreground/10">
-                  <img src={post.heroImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="w-full md:w-1/3 aspect-[4/3] relative rounded-xl overflow-hidden shrink-0 border border-foreground/10 bg-foreground/5">
+                  <img 
+                    src={post.heroImage} 
+                    alt={post.title} 
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80";
+                    }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                 </div>
 
