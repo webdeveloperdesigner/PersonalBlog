@@ -8,6 +8,23 @@ import MagneticButton from './MagneticButton';
 export default function Contact() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [showToast, setShowToast] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const fieldMap: Record<string, string> = {
+      contact_field_name: 'name',
+      contact_field_email: 'email',
+      contact_field_company: 'company',
+      contact_field_msg: 'message'
+    };
+    const key = fieldMap[e.target.id] || e.target.id;
+    setFormData(prev => ({ ...prev, [key]: e.target.value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,29 +46,59 @@ export default function Contact() {
               <span className="italic font-light text-primary">something rare.</span>
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} autoComplete="none" className="space-y-8">
+              {/* Chrome/Edge Incognito Trap Inputs */}
+              <input type="text" name="fake_username" aria-hidden="true" className="hidden opacity-0 w-0 h-0 absolute -z-50" tabIndex={-1} autoComplete="off" />
+              <input type="password" name="fake_password" aria-hidden="true" className="hidden opacity-0 w-0 h-0 absolute -z-50" tabIndex={-1} autoComplete="off" />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative group">
                   <input 
                     suppressHydrationWarning 
                     type="text" 
-                    id="name" 
+                    id="contact_field_name" 
+                    name="contact_field_name"
                     required 
-                    placeholder="Your Name"
-                    className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer" 
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground focus:outline-none focus:border-primary transition-colors peer" 
                   />
-                  <label htmlFor="name" className="absolute left-0 top-4 text-foreground/50 text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs transition-all pointer-events-none font-medium">Your Name</label>
+                  <label 
+                    htmlFor="contact_field_name" 
+                    className="absolute left-0 top-4 text-foreground/50 text-sm font-medium transition-all pointer-events-none peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-semibold"
+                  >
+                    Your Name
+                  </label>
                 </div>
+
                 <div className="relative group">
                   <input 
                     suppressHydrationWarning 
-                    type="email" 
-                    id="email" 
+                    type="text"
+                    inputMode="email" 
+                    id="contact_field_email" 
+                    name="contact_field_email"
                     required 
-                    placeholder="Your Email"
-                    className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer" 
+                    autoComplete="new-password"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground focus:outline-none focus:border-primary transition-colors peer" 
                   />
-                  <label htmlFor="email" className="absolute left-0 top-4 text-foreground/50 text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs transition-all pointer-events-none font-medium">Your Email</label>
+                  <label 
+                    htmlFor="contact_field_email" 
+                    className="absolute left-0 top-4 text-foreground/50 text-sm font-medium transition-all pointer-events-none peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-semibold"
+                  >
+                    Your Email
+                  </label>
                 </div>
               </div>
               
@@ -59,22 +106,42 @@ export default function Contact() {
                 <input 
                   suppressHydrationWarning 
                   type="text" 
-                  id="company" 
-                  placeholder="Company"
-                  className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground placeholder-transparent focus:outline-none focus:border-primary transition-colors peer" 
+                  id="contact_field_company" 
+                  name="contact_field_company"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder=" "
+                  className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground focus:outline-none focus:border-primary transition-colors peer" 
                 />
-                <label htmlFor="company" className="absolute left-0 top-4 text-foreground/50 text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs transition-all pointer-events-none font-medium">Company / Organization</label>
+                <label 
+                  htmlFor="contact_field_company" 
+                  className="absolute left-0 top-4 text-foreground/50 text-sm font-medium transition-all pointer-events-none peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-semibold"
+                >
+                  Company / Organization
+                </label>
               </div>
 
               <div className="relative group">
                 <textarea 
-                  id="message" 
+                  id="contact_field_msg" 
+                  name="contact_field_msg"
                   required 
                   rows={4} 
-                  placeholder="Message"
-                  className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground placeholder-transparent focus:outline-none focus:border-primary peer transition-colors resize-none" 
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder=" "
+                  className="w-full bg-transparent border-b border-foreground/20 py-4 px-0 text-foreground focus:outline-none focus:border-primary peer transition-colors resize-none" 
                 />
-                <label htmlFor="message" className="absolute left-0 top-4 text-foreground/50 text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs transition-all pointer-events-none font-medium">Message Details</label>
+                <label 
+                  htmlFor="contact_field_msg" 
+                  className="absolute left-0 top-4 text-foreground/50 text-sm font-medium transition-all pointer-events-none peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary peer-[:not(:placeholder-shown)]:font-semibold"
+                >
+                  Message Details
+                </label>
               </div>
 
               <div className="pt-4">

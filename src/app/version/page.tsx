@@ -1,11 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { 
-  ArrowLeft, Cpu, ShieldCheck, GitCommit, Zap, Code2, Globe, Layers, 
-  Terminal, ExternalLink, Activity, Clock, CheckCircle2, Server, ArrowUpRight
+  ArrowLeft, ArrowUpRight
 } from 'lucide-react';
 
 const techStack = [
@@ -13,26 +11,21 @@ const techStack = [
   { name: 'React Architecture', version: 'v19.0.0', role: 'Concurrent Rendering & Server Components', badge: 'UI Core', color: 'text-purple-400 border-purple-500/30 bg-purple-500/10' },
   { name: 'Tailwind CSS Engine', version: 'v4.0.0', role: 'Atomic Styling & Dark Variant Sync', badge: 'Styling', color: 'text-sky-400 border-sky-500/30 bg-sky-500/10' },
   { name: 'GSAP Animation Suite', version: 'v3.12.5', role: 'ScrollTrigger & Kinetic Motion Mechanics', badge: 'Motion', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10' },
-  { name: 'Framer Motion Engine', version: 'v11.15.0', role: '3D Stage Perspective & Page Transitions', badge: 'FX Engine', color: 'text-amber-400 border-amber-500/30 bg-amber-500/10' },
+  { name: 'Framer Motion Engine', version: 'v11.15.0', role: '3D Stage Perspective & Fullscreen Overlays', badge: 'FX Engine', color: 'text-amber-400 border-amber-500/30 bg-amber-500/10' },
   { name: 'Lucide Vector System', version: 'v0.469.0', role: 'Unified Executive & Technical Iconography', badge: 'Vector UI', color: 'text-pink-400 border-pink-500/30 bg-pink-500/10' }
-];
-
-const systemMetrics = [
-  { label: 'SYSTEM VERSION', value: 'v2.8.0 (Stable)', desc: 'Production Release Architecture' },
-  { label: 'TELEMETRY ENGINE', value: 'GitHub Bytes + 365 Days', desc: 'Single-Source /api/stats Proxy' },
-  { label: 'ACTIVE ROUTES', value: '21 Subdirectories', desc: 'Next.js App Router Architecture' },
-  { label: 'COMPONENT MODULES', value: '25 Custom Units', desc: 'High-Performance React UI' }
 ];
 
 const activeRoutes = [
   { path: '/', label: 'Home Page', desc: 'Hero, About, Timeline, Projects, Contact' },
+  { path: '/me', label: 'Interactive Deck', desc: 'CS Engineer Identity, BodhAI & Skills Deck' },
+  { path: '/tech', label: 'Tech & Heatmap', desc: '365-Day GitHub Pulse & Language IQ' },
   { path: '/projects', label: 'All Projects', desc: 'Categorized Year-Wise with Stealth Locks' },
-  { path: '/tech', label: 'Tech & Heatmap', desc: '365-Day GitHub Pulse & Skill IQ' },
   { path: '/core', label: 'Core Capabilities', desc: 'Interactive 3D Carousel & Kinetic Marquee' },
   { path: '/digital-twin', label: 'Digital Twin AI', desc: 'Interactive AI Resume Agent Preview' },
   { path: '/whats-new', label: 'What\'s New', desc: 'Real-Time Feature Rollouts & Release Feed' },
   { path: '/changelog', label: 'Engineering Changelog', desc: 'Structured Version Log & Commit History' },
-  { path: '/updates', label: 'System Updates Stream', desc: 'Live System Updates & Release Subscriber Hub' }
+  { path: '/version', label: 'System Specs', desc: 'Current Production Release State' },
+  { path: '/updates', label: 'System Updates Stream', desc: 'Live System Updates & Release Stream' }
 ];
 
 export default function VersionPage() {
@@ -72,6 +65,14 @@ export default function VersionPage() {
 
               <div className="flex items-center gap-3">
                 <Link
+                  href="/whats-new"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-foreground/60 hover:text-primary transition-colors"
+                >
+                  <span>What's New</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+                <span className="text-foreground/20">|</span>
+                <Link
                   href="/changelog"
                   className="inline-flex items-center gap-1.5 font-mono text-xs text-foreground/60 hover:text-primary transition-colors"
                 >
@@ -83,110 +84,101 @@ export default function VersionPage() {
                   href="/updates"
                   className="inline-flex items-center gap-1.5 font-mono text-xs text-foreground/60 hover:text-primary transition-colors"
                 >
-                  <span>Updates</span>
+                  <span>Live Stream</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
             <h1 className="font-display font-extrabold italic text-4xl sm:text-6xl md:text-7xl tracking-tight text-foreground uppercase mb-6">
-              PORTFOLIO ARCHITECTURE v2.7.0
+              PORTFOLIO ARCHITECTURE v2.8.0
             </h1>
 
             <p className="font-mono text-sm sm:text-base text-foreground/60 max-w-3xl leading-relaxed">
-              Official technical build specifications, runtime technology dependencies, single-source telemetry architecture, and active subroute inventory.
+              Current production state, system release parameters, dependency stack, and active route registry.
             </p>
           </div>
 
-          {/* 4 Stat Metric Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {systemMetrics.map((m) => (
-              <div key={m.label} className="p-6 rounded-2xl bg-foreground/[0.03] border border-foreground/10 backdrop-blur-md">
-                <span className="font-mono text-[10px] font-bold text-foreground/50 uppercase tracking-widest block mb-2">
-                  {m.label}
-                </span>
-                <div className="font-display font-extrabold text-2xl text-foreground mb-1">
-                  {m.value}
-                </div>
-                <span className="font-mono text-xs text-foreground/40">
-                  {m.desc}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Core Tech Stack Specifications */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-8">
-              <Cpu className="w-5 h-5 text-primary" />
-              <h2 className="font-display text-2xl md:text-3xl font-extrabold uppercase italic tracking-tight text-foreground">
-                RUNTIME TECH STACK SPECIFICATIONS
-              </h2>
+          {/* Current Version Executive Dashboard (Strict 2.8.0 Spec) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
+              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">CURRENT VERSION</span>
+              <span className="font-display font-extrabold text-3xl text-[#FF7029] block mb-1">v2.8.0</span>
+              <span className="font-mono text-xs text-foreground/60 block">Semantic Release Generation</span>
             </div>
 
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
+              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">RELEASE STATUS</span>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-display font-extrabold text-2xl text-emerald-400">STABLE</span>
+              </div>
+              <span className="font-mono text-xs text-foreground/60 block">Released 31 Aug 2026</span>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
+              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">PATCH STREAM</span>
+              <span className="font-display font-extrabold text-2xl text-foreground block mb-1">v2.8.1</span>
+              <span className="font-mono text-xs text-foreground/60 block">Deployed 02 Sep 2026</span>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
+              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">NEXT MINOR</span>
+              <span className="font-display font-extrabold text-2xl text-cyan-400 block mb-1">v2.9.0</span>
+              <span className="font-mono text-xs text-foreground/60 block">In Active Development</span>
+            </div>
+          </div>
+
+          {/* V2 Lifecycle Status Banner */}
+          <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <span className="font-mono text-xs font-bold text-primary uppercase tracking-widest block mb-1">PRODUCT LIFECYCLE MODEL</span>
+              <h3 className="font-display font-bold text-2xl text-foreground mb-2">V2 Active Engineering Track</h3>
+              <p className="font-sans text-sm text-foreground/70 max-w-xl">
+                Major architectural generations evolve via Minor features (<code className="text-primary font-mono font-bold">2.8.0 → 2.9.0</code>) and Patch releases (<code className="text-primary font-mono font-bold">2.8.0 → 2.8.1</code>).
+              </p>
+            </div>
+            <Link 
+              href="/changelog" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background font-mono text-xs font-bold hover:bg-primary-hover transition-colors shadow-md whitespace-nowrap"
+            >
+              <span>EXPLORE FULL CHANGELOG</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Core Dependencies */}
+          <div className="mb-16">
+            <h2 className="font-display font-bold text-2xl text-foreground uppercase tracking-tight mb-8">
+              RUNTIME DEPENDENCY MATRIX
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {techStack.map((tech) => (
-                <div 
-                  key={tech.name} 
-                  className="p-6 rounded-3xl bg-foreground/[0.02] border border-foreground/10 hover:border-foreground/20 transition-all shadow-lg flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className={`px-2.5 py-1 rounded-full font-mono text-[10px] font-extrabold uppercase border ${tech.color}`}>
-                        {tech.badge}
-                      </span>
-                      <span className="font-mono text-xs font-bold text-foreground/70">
-                        {tech.version}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display font-bold text-lg text-foreground mb-2">
-                      {tech.name}
-                    </h3>
-                    <p className="font-mono text-xs text-foreground/60 leading-relaxed">
-                      {tech.role}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-foreground/10 flex items-center justify-between font-mono text-[10px] text-foreground/40">
-                    <span>DEPENDENCY STATUS</span>
-                    <span className="text-emerald-500 font-bold flex items-center gap-1">
-                      <CheckCircle2 className="w-3 h-3" /> ACTIVE
+                <div key={tech.name} className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-all">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="font-mono text-xs font-bold text-foreground/60">{tech.name}</span>
+                    <span className={`font-mono text-[10px] font-bold px-2 py-0.5 rounded-full border ${tech.color}`}>
+                      {tech.badge}
                     </span>
                   </div>
+                  <span className="font-display font-bold text-xl text-foreground block mb-2">{tech.version}</span>
+                  <p className="font-sans text-xs text-foreground/60">{tech.role}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Active Subroute Inventory */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <Server className="w-5 h-5 text-cyan-400" />
-              <h2 className="font-display text-2xl md:text-3xl font-extrabold uppercase italic tracking-tight text-foreground">
-                ACTIVE SUBROUTE INVENTORY
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {activeRoutes.map((r) => (
-                <Link
-                  key={r.path}
-                  href={r.path}
-                  className="p-5 rounded-2xl bg-foreground/[0.02] border border-foreground/10 hover:border-primary/40 transition-all flex items-center justify-between group"
-                >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 font-mono text-xs font-bold text-primary">
-                      <span>{r.path}</span>
-                      <span className="text-foreground/30">•</span>
-                      <span className="text-foreground font-semibold">{r.label}</span>
-                    </div>
-                    <p className="font-mono text-xs text-foreground/50">
-                      {r.desc}
-                    </p>
-                  </div>
-
-                  <ArrowUpRight className="w-4 h-4 text-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-4" />
+          {/* Active Routes */}
+          <div className="mb-16">
+            <h2 className="font-display font-bold text-2xl text-foreground uppercase tracking-tight mb-8">
+              SYSTEM ROUTE REGISTRY
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {activeRoutes.map((route) => (
+                <Link key={route.path} href={route.path} className="p-5 rounded-xl bg-foreground/5 border border-foreground/10 hover:border-primary/50 transition-all group">
+                  <span className="font-mono text-xs font-bold text-primary block mb-1 group-hover:underline">{route.path}</span>
+                  <span className="font-display font-bold text-sm text-foreground block mb-1">{route.label}</span>
+                  <p className="font-sans text-[11px] text-foreground/50">{route.desc}</p>
                 </Link>
               ))}
             </div>
@@ -194,7 +186,6 @@ export default function VersionPage() {
 
         </div>
       </main>
-
       <Footer />
     </>
   );

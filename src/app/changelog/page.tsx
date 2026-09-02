@@ -37,10 +37,28 @@ interface Release {
 
 const releasesData: Release[] = [
   {
+    version: 'v2.8.1',
+    date: '02 SEP 2026',
+    year: '2026',
+    statusBadge: 'LIVE PATCH',
+    badgeColor: 'bg-emerald-500 text-white',
+    title: 'Fullscreen Footer Overlay Drawer, Incognito Autofill Traps & Hydration Shield',
+    summary: 'Pixel-perfect fullscreen Let\'s Work Together footer overlay drawer with 3x2 social grid (GitHub, LinkedIn, Twitter, Instagram, Discord, Spotify), copy email button, top marquee ticker, Chrome Incognito autofill trap inputs, global -webkit-autofill CSS overrides, and hydration warning suppression.',
+    tags: ['UX', 'FIX', 'THEME', 'ARCHITECTURE'],
+    commitUrl: 'https://github.com/webdeveloperdesigner/PersonalBlog/commits/main',
+    changes: [
+      { id: '01', title: 'Interactive Fullscreen Dark Overlay Drawer', category: 'UX', desc: 'Built Framer Motion full-screen backdrop-blurred overlay featuring Let\'s Work Together heading, copy-to-clipboard email pill button, top running marquee, and scroll-to-top button.' },
+      { id: '02', title: 'Pixel-Perfect 3x2 Social Grid', category: 'UX', desc: 'Configured 3x2 social card grid matching reference design exactly with vector SVG icons for GitHub, LinkedIn, Twitter, Instagram, Discord, and Spotify.' },
+      { id: '03', title: 'Chromium Incognito Autofill Defeat Architecture', category: 'FIX', desc: 'Trapped Chrome autofill heuristics using invisible fake_username & fake_password inputs, obfuscated form field IDs (contact_field_email), and global -webkit-autofill transition-delay CSS overrides.' },
+      { id: '04', title: 'Form Input Label Specificity Conflict Resolution', category: 'FIX', desc: 'Unified Tailwind peer-focus and peer-[:not(:placeholder-shown)] label modifiers to eliminate CSS class specificity collisions.' },
+      { id: '05', title: 'Browser Extension Hydration Shield', category: 'ARCHITECTURE', desc: 'Added suppressHydrationWarning attributes across interactive footer buttons and dynamic copyright year strings.' }
+    ]
+  },
+  {
     version: 'v2.8.0',
     date: '31 AUG 2026',
     year: '2026',
-    statusBadge: 'CURRENT RELEASE',
+    statusBadge: 'STABLE RELEASE',
     badgeColor: 'bg-[#FF7029] text-white',
     title: 'GitHub Language Byte Aggregation Engine, Dual Theme SDE & Telemetry Sync',
     summary: 'Exact GitHub repository language byte count aggregation (/repos/{owner}/{repo}/languages), uncapped scrollable TECH STACK IQ matrix, dual Light & Dark Mode SDE theme support for telemetry card, explicit GitHub data source labeling, and 1s step counter animation.',
@@ -219,8 +237,9 @@ const releasesData: Release[] = [
 
 export default function EngineeringChangelogPage() {
   const [activeFilter, setActiveFilter] = useState<CategoryType>('ALL');
+  const [activeRelease, setActiveRelease] = useState<string>(releasesData[0]?.version || 'v2.8.1');
   const [openReleaseDetails, setOpenReleaseDetails] = useState<Record<string, boolean>>({
-    'v2.5.0': true,
+    'v2.8.1': true,
   });
 
   const toggleReleaseDetails = (version: string) => {
@@ -236,6 +255,7 @@ export default function EngineeringChangelogPage() {
   });
 
   const scrollToRelease = (version: string) => {
+    setActiveRelease(version);
     const el = document.getElementById(version);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -331,7 +351,7 @@ export default function EngineeringChangelogPage() {
               <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-foreground/50 mt-1">STARTED</span>
             </div>
             <div className="p-4 rounded-xl bg-foreground/[0.03] border border-foreground/10 flex flex-col">
-              <span className="font-display text-3xl font-black text-[#FF7029]">v2.5.0</span>
+              <span className="font-display text-3xl font-black text-[#FF7029]">{releasesData[0]?.version || 'v2.8.1'}</span>
               <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-foreground/50 mt-1">LATEST RELEASE</span>
             </div>
             <div className="p-4 rounded-xl bg-foreground/[0.03] border border-foreground/10 flex flex-col">
@@ -358,7 +378,7 @@ export default function EngineeringChangelogPage() {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`font-mono text-xs font-bold px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`font-mono text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer border ${
                   activeFilter === cat 
                     ? 'bg-[#FF7029] text-white border-[#FF7029] shadow-sm' 
                     : 'bg-foreground/5 text-foreground/70 border-foreground/10 hover:border-foreground/30 hover:text-foreground'
@@ -390,13 +410,13 @@ export default function EngineeringChangelogPage() {
                   key={rel.version}
                   onClick={() => scrollToRelease(rel.version)}
                   className={`font-mono text-xs font-bold px-3 py-2 rounded-lg text-left transition-all shrink-0 flex items-center justify-between group cursor-pointer ${
-                    rel.version === 'v2.5.0'
+                    rel.version === activeRelease
                       ? 'bg-[#FF7029]/10 border border-[#FF7029]/40 text-[#FF7029]'
                       : 'hover:bg-foreground/5 text-foreground/70 hover:text-foreground border border-transparent'
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    {rel.version === 'v2.5.0' && <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029]" />}
+                    {rel.version === activeRelease && <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029]" />}
                     <span>{rel.version}</span>
                   </div>
                   <span className="font-mono text-[9px] opacity-60 group-hover:opacity-100 hidden lg:inline">

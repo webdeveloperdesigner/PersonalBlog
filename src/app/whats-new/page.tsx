@@ -1,20 +1,25 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { 
   ArrowLeft, Sparkles, CheckCircle2, Rocket, Zap, ShieldCheck, 
   ArrowUpRight, ExternalLink, Code2, Globe, Cpu
 } from 'lucide-react';
 
-function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.34 6-1.53 6-6.76a5.2 5.2 0 0 0-1.45-3.7 4.9 4.9 0 0 0-.14-3.6s-1.18-.38-3.9 1.46a13.3 13.3 0 0 0-7 0C6.18 2.5 5 2.88 5 2.88a4.9 4.9 0 0 0-.14 3.6A5.2 5.2 0 0 0 3 10.24c0 5.22 3 6.42 6 6.76a4.8 4.8 0 0 0-1 3.24v4"></path><path d="M3 19s1-1 3-1"></path></svg>;
-}
-
 const whatsNewItems = [
   {
     id: '001',
+    badge: 'v2.8.1 PATCH',
+    badgeColor: 'bg-emerald-500 text-white',
+    title: 'Full-Screen Dark Overlay Drawer & Chromium Autofill Defeat Architecture',
+    date: 'September 02, 2026',
+    desc: 'Launched interactive full-screen dark drawer overlay featuring Let\'s Work Together heading, copy-to-clipboard email pill, top running marquee, 3x2 social grid (GitHub, LinkedIn, Twitter, Instagram, Discord, Spotify), and Chrome Incognito autofill defeat engine.',
+    tags: ['Footer Overlay', 'Social Grid', 'Autofill Defeat', 'Hydration Shield'],
+    link: '/timeline'
+  },
+  {
+    id: '002',
     badge: 'v2.8.0 RELEASE',
     badgeColor: 'bg-[#FF7029] text-white',
     title: 'GitHub Language Byte Aggregation Engine & Dual Light/Dark Mode SDE Architecture',
@@ -24,9 +29,9 @@ const whatsNewItems = [
     link: '/tech'
   },
   {
-    id: '00A',
+    id: '003',
     badge: 'v2.7.0 RELEASE',
-    badgeColor: 'bg-emerald-500 text-white',
+    badgeColor: 'bg-[#FF7029] text-white',
     title: 'Single-Source-Of-Truth GitHub Telemetry Engine & Live Heatmap',
     date: 'August 30, 2026',
     desc: 'Server backend 365 calendar days normalization engine (/api/stats), auto-updating 2025-2026 rolling year range, live active browser session timer, and dynamic session token generator.',
@@ -34,9 +39,9 @@ const whatsNewItems = [
     link: '/tech'
   },
   {
-    id: '00B',
+    id: '004',
     badge: 'STEALTH & BADGES',
-    badgeColor: 'bg-emerald-500 text-white',
+    badgeColor: 'bg-blue-600 text-white',
     title: 'Stealth Blurred Project & Personal / Group Badges (/projects)',
     date: 'August 30, 2026',
     desc: 'Added explicit Personal Project vs Group Project badges with Lucide icons, year-ordered project grouping (2026 first), and a blurred lock stealth project preview.',
@@ -44,265 +49,127 @@ const whatsNewItems = [
     link: '/projects'
   },
   {
-    id: '00C',
+    id: '005',
     badge: 'SYSTEM ROUTES',
-    badgeColor: 'bg-blue-600 text-white',
+    badgeColor: 'bg-purple-600 text-white',
     title: 'System Version Dashboard (/version) & Release Updates Stream (/updates)',
     date: 'August 30, 2026',
     desc: 'Launched comprehensive System Version dashboard highlighting runtime tech stack specifications, active routes index, and live system updates stream.',
     tags: ['Version Dashboard', 'System Updates', 'Tech Stack', 'Routes Index'],
     link: '/version'
-  },
-  {
-    id: '00D',
-    badge: 'DIGITAL TWIN AI',
-    badgeColor: 'bg-purple-600 text-white',
-    title: 'Chat with my Digital Twin AI Agent (/digital-twin)',
-    date: 'August 30, 2026',
-    desc: "Don't want to read through a traditional resume? Interactive preview of my custom AI agent trained on complete portfolio, skills, and work history for context-aware queries.",
-    tags: ['AI Agent', 'Digital Twin', 'Portfolio RAG', 'GenAI'],
-    link: '/digital-twin'
-  },
-  {
-    id: '01',
-    badge: 'NEW ROUTE',
-    badgeColor: 'bg-cyan-500 text-white',
-    title: '3D Core Capabilities & Kinetic Marquee (/core)',
-    date: 'August 24, 2026',
-    desc: 'Interactive 3D horizontal perspective carousel stage paired with an infinite kinetic velocity marquee banner ("CREATIVE ✦ ENGINEERING") featuring webkit stroke text effects.',
-    tags: ['3D Stage', 'Framer Motion', 'Marquee', 'Core Capabilities'],
-    link: '/core'
-  },
-  {
-    id: '02',
-    badge: 'LIVE WIDGET',
-    badgeColor: 'bg-[#FF7029] text-white',
-    title: 'GitHub Real-Time Contribution Heatmap & Tech Matrix (/tech)',
-    date: 'August 24, 2026',
-    desc: 'Real-time theme-adaptive GitHub commit contribution matrix widget integrated with backend API proxies, alongside an interactive skills and tools matrix.',
-    tags: ['GitHub Heatmap', 'Tech Stack', 'API Proxy', 'Widgets'],
-    link: '/tech'
-  },
-  {
-    id: '03',
-    badge: 'LIVE NOW',
-    badgeColor: 'bg-[#FF7029] text-white',
-    title: 'Executive Experience Timeline Architecture',
-    date: 'August 23, 2026',
-    desc: 'Updated career experience timeline cards formatted in exact executive structure featuring MotionCut Web Development, Digihero SEO Optimization, and BodhAI AI Learning Platform with single-line titles and verification certificate links.',
-    tags: ['Timeline', 'MotionCut', 'Digihero', 'BodhAI', 'Certificates'],
-    link: '/#experience'
-  },
-  {
-    id: '04',
-    badge: 'ARCHITECTURE',
-    badgeColor: 'bg-emerald-500 text-white',
-    title: 'Full-Site Smooth Anchor Scroll Engine',
-    date: 'August 23, 2026',
-    desc: 'Engineered smooth scroll interceptor handlers routing /#hero, /#about, /#experience, /#projects, and /#blog seamlessly across desktop and mobile navigation.',
-    tags: ['Smooth Scroll', 'Anchor Navigation', 'Navbar', 'UX Engine'],
-    link: '/#projects'
-  },
-  {
-    id: '05',
-    badge: 'ENGINEERING LOG',
-    badgeColor: 'bg-purple-500 text-white',
-    title: 'GitHub-Style Engineering Release Log (/changelog)',
-    date: 'August 23, 2026',
-    desc: 'Redesigned /changelog with structured change cards, collapsible open/close details, metric badges, releases index sidebar, and direct GitHub commit links.',
-    tags: ['Changelog', 'GitHub Integration', 'Collapsible Accordion', 'Release Feed'],
-    link: '/changelog'
-  },
-  {
-    id: '06',
-    badge: 'FEATURED PROJECT',
-    badgeColor: 'bg-blue-500 text-white',
-    title: 'BodhAI — AI-Powered Learning Practice Platform',
-    date: 'August 2026',
-    desc: 'Interactive MCQ & coding practice platform powered by React, Firebase, and Tailwind CSS. Features custom AI assessment, performance tracking, and live quiz generator.',
-    tags: ['React', 'Firebase', 'Tailwind', 'AI/EdTech'],
-    link: 'https://github.com/webdeveloperdesigner/BodhAI'
-  },
-  {
-    id: '07',
-    badge: 'HEALTHCARE AI',
-    badgeColor: 'bg-cyan-500 text-white',
-    title: 'AI Healthcare Chatbot',
-    date: 'August 2026',
-    desc: 'Intelligent healthcare assistant website providing user-friendly medical guidance, symptom analysis, and immediate doctor referral dispatch.',
-    tags: ['AI/Healthcare', 'Python', 'React', 'REST API'],
-    link: 'https://github.com/webdeveloperdesigner/AI-Based-Chatbot-for-Healthcare-'
-  },
-  {
-    id: '08',
-    badge: '2026 EDITION',
-    badgeColor: 'bg-amber-500 text-white',
-    title: 'Veda Resume — Smart ATS Optimization Engine',
-    date: '2026 Edition',
-    desc: 'Next-generation AI resume builder and ATS scanner engineered to optimize resume keywords and increase interview callbacks.',
-    tags: ['GenAI', 'Next.js', 'TypeScript', 'Tailwind'],
-    link: 'https://github.com/webdeveloperdesigner/veda-resume'
-  },
-  {
-    id: '09',
-    badge: 'MOBILE OPTIMIZATION',
-    badgeColor: 'bg-teal-500 text-white',
-    title: 'Responsive Development Notice Banner',
-    date: 'August 23, 2026',
-    desc: 'Re-engineered top development banner with adaptive mobile typography and clean icon-only GitHub quick action button.',
-    tags: ['Mobile UX', 'Notice Banner', 'Responsive', 'GitHub Icon'],
-    link: '/'
-  },
-  {
-    id: '10',
-    badge: 'NAV & THEME',
-    badgeColor: 'bg-indigo-500 text-white',
-    title: 'Glassmorphic Sticky Header & Theme Engine',
-    date: 'August 23, 2026',
-    desc: 'Configured sticky backdrop-blur-xl navbar with persistent VIVEK logo, Explore navigation dropdown, and synchronized Light/Dark mode switcher.',
-    tags: ['Header', 'Glassmorphism', 'Dark Mode', 'Explore Dropdown'],
-    link: '/'
-  },
-  {
-    id: '11',
-    badge: 'SYSTEM FOOTER',
-    badgeColor: 'bg-rose-500 text-white',
-    title: 'Global System Footer Integration',
-    date: 'August 23, 2026',
-    desc: 'Integrated marquee text strip, brand wordmark, quick navigation shortcuts, and smooth back-to-top controls across all subpages.',
-    tags: ['Footer', 'Marquee', 'Branding', 'Subpages'],
-    link: '/#contact'
   }
 ];
 
 export default function WhatsNewPage() {
   return (
     <>
-    <main className="min-h-screen bg-background text-foreground pt-44 pb-24 px-6 md:px-16 relative selection:bg-primary/30 selection:text-primary">
-      {/* Background Grid Pattern */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(rgba(240, 240, 240, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 240, 240, 0.05) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
-
-      <div className="container mx-auto max-w-4xl relative z-10">
+      <main className="min-h-screen bg-background text-foreground pt-44 pb-24 px-6 md:px-16 relative selection:bg-primary/30 selection:text-primary">
         
-        {/* Top Navigation Bar */}
-        <div className="flex items-center justify-between gap-4 mb-12 flex-wrap">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-foreground/15 bg-foreground/5 font-mono text-xs uppercase tracking-widest text-foreground hover:text-primary hover:border-primary transition-all shadow-sm font-bold"
-          >
-            <ArrowLeft className="w-4 h-4 text-primary" />
-            <span>BACK TO PORTFOLIO</span>
-          </Link>
+        {/* Background Grid Pattern */}
+        <div 
+          className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(rgba(240, 240, 240, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 240, 240, 0.05) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
 
-          <a 
-            href="https://github.com/webdeveloperdesigner/PersonalBlog"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FF7029] text-white font-mono text-xs uppercase tracking-widest font-bold shadow-md hover:bg-[#E65F1E] transition-all hover:scale-105"
-          >
-            <GithubIcon className="w-4 h-4 text-white" />
-            <span>CHECK GITHUB REPO</span>
-          </a>
-        </div>
+        <div className="container mx-auto max-w-5xl relative z-10">
+          
+          {/* Top Navigation */}
+          <div className="mb-12 flex flex-wrap items-center justify-between gap-4">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-2 font-mono text-xs text-foreground/60 hover:text-primary transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <span>RETURN TO PORTFOLIO</span>
+            </Link>
 
-        {/* Header Section */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 rounded border border-[#FF7029]/30 text-[#FF7029] font-mono text-xs uppercase tracking-widest font-bold">
-              ✦ LIVE STATUS
-            </span>
-            <span className="font-mono text-xs text-foreground/60 uppercase tracking-widest font-semibold">
-              REAL-TIME PORTFOLIO UPDATES
-            </span>
+            <Link 
+              href="/changelog" 
+              className="inline-flex items-center gap-1.5 font-mono text-xs text-primary hover:underline font-bold"
+            >
+              <span>View Complete Changelog</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground mb-6">
-            What&apos;s <span className="text-[#FF7029] italic font-light">New</span>
-          </h1>
+          {/* Header Title Section */}
+          <div className="mb-16 border-b border-foreground/10 pb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF7029]/10 border border-[#FF7029]/30 font-mono text-xs font-bold text-[#FF7029] tracking-widest uppercase mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#FF7029] animate-pulse" />
+              <span>REAL-TIME FEATURE ROLLOUTS & RELEASE HIGHLIGHTS</span>
+            </div>
 
-          <p className="font-sans text-lg text-foreground/75 max-w-2xl leading-relaxed font-medium">
-            Explore the latest feature rollouts, active project releases, experience additions, and system enhancements across Vivek&apos;s personal developer ecosystem.
-          </p>
-        </div>
+            <h1 className="font-display font-extrabold italic text-4xl sm:text-6xl md:text-7xl tracking-tight text-foreground uppercase mb-6">
+              WHAT'S NEW
+            </h1>
 
-        {/* Updates Grid */}
-        <div className="flex flex-col gap-8">
-          {whatsNewItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-background border border-foreground/15 rounded-3xl p-6 md:p-8 hover:border-[#FF7029]/45 transition-all duration-300 shadow-lg group relative overflow-hidden"
-            >
-              {/* Card Top Header */}
-              <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-foreground/10">
-                <div className="flex items-center gap-3">
-                  <span className={`font-mono text-[10px] uppercase font-extrabold tracking-widest px-3 py-1 rounded-full ${item.badgeColor}`}>
-                    {item.badge}
-                  </span>
-                  <span className="font-mono text-xs text-foreground/60 font-semibold">{item.date}</span>
-                </div>
-                <span className="font-mono text-xs text-[#FF7029] font-bold">#{item.id}</span>
-              </div>
+            <p className="font-mono text-sm sm:text-base text-foreground/60 max-w-2xl leading-relaxed">
+              Curated feed of major engineering feature rollouts, architecture upgrades, and component deployments.
+            </p>
+          </div>
 
-              {/* Title */}
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {item.title}
-              </h2>
-
-              {/* Description */}
-              <p className="font-sans text-base text-foreground/75 leading-relaxed mb-6 font-medium">
-                {item.desc}
-              </p>
-
-              {/* Tags & Action Link */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-foreground/10">
-                <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/70 font-semibold"
-                    >
-                      {tag}
+          {/* Feature Rollout List */}
+          <div className="space-y-12 mb-20">
+            {whatsNewItems.map((item) => (
+              <div key={item.id} className="p-8 rounded-3xl bg-foreground/[0.03] border border-foreground/10 hover:border-[#FF7029]/50 transition-all duration-300 group shadow-lg">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className={`font-mono text-[10px] font-bold px-3 py-1 rounded-full ${item.badgeColor}`}>
+                      {item.badge}
                     </span>
-                  ))}
+                    <span className="font-mono text-xs text-foreground/50">{item.date}</span>
+                  </div>
                 </div>
 
-                <Link
-                  href={item.link}
-                  target={item.link.startsWith('http') ? '_blank' : '_self'}
-                  className="inline-flex items-center gap-1.5 font-mono text-xs text-[#FF7029] font-bold uppercase tracking-wider hover:underline group-hover:translate-x-1 transition-transform"
-                >
-                  <span>VIEW DETAILS</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
+                <h3 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="font-sans text-foreground/70 text-base leading-relaxed mb-6">
+                  {item.desc}
+                </p>
+
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-xs px-2.5 py-1 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/60">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link 
+                    href={item.link} 
+                    className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[#FF7029] hover:underline"
+                  >
+                    <span>EXPLORE FEATURE</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Footer Navigation */}
-        <div className="mt-16 text-center pt-8 border-t border-foreground/10">
-          <Link
-            href="/changelog"
-            className="inline-flex items-center gap-2 text-foreground/70 hover:text-primary font-mono text-xs uppercase tracking-widest font-bold transition-colors"
-          >
-            <span>VIEW FULL SYSTEM CHANGELOG (v2.5.0)</span>
-            <ExternalLink className="w-4 h-4" />
-          </Link>
-        </div>
+          {/* Bottom Footer CTA to Full Changelog */}
+          <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-display font-bold text-2xl text-foreground mb-1">Looking for complete commit history?</h3>
+              <p className="font-sans text-sm text-foreground/70">View structured version entries from v1.0.0 to v2.8.1 on our engineering changelog.</p>
+            </div>
+            <Link 
+              href="/changelog" 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-background font-mono text-xs font-bold hover:bg-primary-hover transition-colors shadow-md whitespace-nowrap"
+            >
+              <span>VIEW COMPLETE CHANGELOG →</span>
+            </Link>
+          </div>
 
-      </div>
-    </main>
-    <Footer />
+        </div>
+      </main>
+      <Footer />
     </>
   );
 }

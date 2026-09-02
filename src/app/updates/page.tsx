@@ -11,6 +11,26 @@ import {
 
 const systemUpdates = [
   {
+    id: 'UPD-2026-0902-1',
+    version: 'v2.8.1',
+    date: '02 SEP 2026',
+    tag: 'LIVE PATCH',
+    tagColor: 'bg-emerald-500 text-white',
+    title: 'v2.8.1 Deployed: Chrome Autofill Defeat & Hydration Suppression Patch',
+    summary: 'Deployed patch v2.8.1 addressing Chromium Incognito autofill style overrides, input field label class specificity conflicts, and browser extension hydration warning suppression on footer buttons.',
+    details: [
+      'Engineered Chrome Incognito autofill trap inputs (fake_username & fake_password) trapping automatic browser heuristics',
+      'Obfuscated form field IDs (contact_field_email) to defeat Chrome desktop email fill while keeping mobile inputMode="email"',
+      'Added global CSS -webkit-autofill transition-delay overrides preventing yellow/white background fills',
+      'Resolved label class specificity conflicts by unifying peer-focus and peer-[:not(:placeholder-shown)] modifiers',
+      'Added suppressHydrationWarning to interactive footer buttons and dynamic copyright year'
+    ],
+    links: [
+      { label: 'View Contact Section', href: '/#contact' },
+      { label: 'View Version Specs', href: '/version' }
+    ]
+  },
+  {
     id: 'UPD-2026-0831',
     version: 'v2.8.0',
     date: '31 AUG 2026',
