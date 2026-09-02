@@ -5,8 +5,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Sparkles, X, ArrowUp, Copy, Check, Mail
+  Sparkles, X, ArrowUp, Copy, Check, Mail, Clock, Bot
 } from 'lucide-react';
+import Link from 'next/link';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -28,18 +29,11 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
 }
 
-function DiscordIcon(props: React.SVGProps<SVGSVGElement>) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7.5 4.5A15.5 15.5 0 0 0 2 17a15.8 15.8 0 0 0 4.5 2.2A11.7 11.7 0 0 0 7.8 17a10.6 10.6 0 0 1-2.8-1.4s.3-.2.6-.4c3.4 1.6 7.4 1.6 10.8 0 .3.2.6.4.6.4a10.6 10.6 0 0 1-2.8 1.4c.4.7.8 1.4 1.3 2.2A15.8 15.8 0 0 0 22 17a15.5 15.5 0 0 0-5.5-12.5C14.5 5.5 12.8 6 12 6c-.8 0-2.5-.5-4.5-1.5z"></path></svg>;
-}
-
-function SpotifyIcon(props: React.SVGProps<SVGSVGElement>) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"></circle><path d="M8 11.5c2.5-1 6.5-1 8.5.5"></path><path d="M9 14.5c2-.7 5-.7 7 .5"></path><path d="M10 17.5c1.5-.5 3.5-.5 5 .5"></path></svg>;
-}
-
 export default function Footer() {
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [timeString, setTimeString] = useState<string>('');
 
   const email = "vivekxdev01@gmail.com";
 
@@ -48,6 +42,23 @@ export default function Footer() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const formatted = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kolkata'
+      });
+      setTimeString(formatted);
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (!wordmarkRef.current) return;
@@ -122,7 +133,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Full-Screen Overlay Modal (Exact Screenshot 1 Layout) */}
+      {/* Full-Screen Overlay Modal */}
       <AnimatePresence>
         {isMoreOpen && (
           <motion.div 
@@ -190,55 +201,114 @@ export default function Footer() {
                 )}
               </div>
 
-              {/* Right Column: 3x2 Social Grid (Matching Screenshot 1 Exactly) */}
+              {/* Right Column: 3x2 Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-xl">
                 {[
                   {
                     name: 'GitHub',
                     icon: <GithubIcon className="w-6 h-6 text-white" />,
-                    href: 'https://github.com/webdeveloperdesigner'
+                    href: 'https://github.com/webdeveloperdesigner',
+                    external: true
                   },
                   {
                     name: 'LinkedIn',
                     icon: <LinkedinIcon className="w-6 h-6 text-white" />,
-                    href: 'https://linkedin.com/in/vivek-vns/'
-                  },
-                  {
-                    name: 'Twitter',
-                    icon: <TwitterIcon className="w-6 h-6 text-white" />,
-                    href: 'https://x.com'
+                    href: 'https://linkedin.com/in/vivek-vns/',
+                    external: true
                   },
                   {
                     name: 'Instagram',
                     icon: <InstagramIcon className="w-6 h-6 text-white" />,
-                    href: 'https://instagram.com/_.heyiamvivek._'
+                    href: 'https://instagram.com/_.heyiamvivek._',
+                    external: true
                   },
                   {
-                    name: 'Discord',
-                    icon: <DiscordIcon className="w-6 h-6 text-white" />,
-                    href: 'https://discord.com'
+                    isTime: true,
+                    name: timeString || '01:27 AM',
+                    subText: 'INDIA (IST)',
+                    icon: <Clock className="w-6 h-6 text-[#FF7029] animate-pulse" />,
+                    href: '#',
+                    external: false
                   },
                   {
-                    name: 'Spotify',
-                    icon: <SpotifyIcon className="w-6 h-6 text-white" />,
-                    href: 'https://spotify.com'
+                    name: 'AI Chat',
+                    icon: <Bot className="w-6 h-6 text-purple-400 animate-bounce" />,
+                    href: '#',
+                    external: false,
+                    badge: 'SOON'
                   }
-                ].map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#FF7029]/60 hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
-                  >
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      {item.icon}
-                    </div>
-                    <span className="font-sans font-bold text-sm text-white/80 group-hover:text-white transition-colors">
-                      {item.name}
-                    </span>
-                  </a>
-                ))}
+                ].map((item) => {
+                  if (item.external) {
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#FF7029]/60 hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                      >
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </div>
+                        <span className="font-sans font-bold text-sm text-white/80 group-hover:text-white transition-colors">
+                          {item.name}
+                        </span>
+                      </a>
+                    );
+                  } else if (item.isTime) {
+                    return (
+                      <Link
+                        key="live-time-card"
+                        href={item.href}
+                        onClick={() => setIsMoreOpen(false)}
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-[#FF7029]/30 hover:border-[#FF7029] hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                      >
+                        <div className="w-14 h-14 rounded-2xl bg-[#FF7029]/10 border border-[#FF7029]/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </div>
+                        <span suppressHydrationWarning className="font-mono font-extrabold text-xs text-white group-hover:text-[#FF7029] transition-colors tracking-wider">
+                          {item.name}
+                        </span>
+                        <span className="font-mono text-[9px] font-bold text-[#FF7029] tracking-widest mt-0.5">
+                          {item.subText}
+                        </span>
+                      </Link>
+                    );
+                  } else if (item.badge === 'SOON') {
+                    return (
+                      <div
+                        key={item.name}
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.03] border border-purple-500/30 opacity-90 transition-all text-center select-none"
+                      >
+                        <span className="absolute top-3 right-3 font-mono text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 tracking-wider">
+                          SOON
+                        </span>
+                        <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-3">
+                          {item.icon}
+                        </div>
+                        <span className="font-sans font-bold text-sm text-purple-200">
+                          {item.name}
+                        </span>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setIsMoreOpen(false)}
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#FF7029]/60 hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                      >
+                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                          {item.icon}
+                        </div>
+                        <span className="font-sans font-bold text-sm text-white/80 group-hover:text-white transition-colors">
+                          {item.name}
+                        </span>
+                      </Link>
+                    );
+                  }
+                })}
               </div>
 
             </div>
