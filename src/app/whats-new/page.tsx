@@ -10,13 +10,13 @@ import {
 const whatsNewItems = [
   {
     id: '001',
-    badge: 'v2.8.1 PATCH',
+    badge: 'v2.8.2 PATCH',
     badgeColor: 'bg-emerald-500 text-white',
-    title: 'Full-Screen Dark Overlay Drawer & Chromium Autofill Defeat Architecture',
-    date: 'September 02, 2026',
-    desc: 'Launched interactive full-screen dark drawer overlay featuring Let\'s Work Together heading, copy-to-clipboard email pill, top running marquee, 3x2 social grid (GitHub, LinkedIn, Twitter, Instagram, Discord, Spotify), and Chrome Incognito autofill defeat engine.',
-    tags: ['Footer Overlay', 'Social Grid', 'Autofill Defeat', 'Hydration Shield'],
-    link: '/timeline'
+    title: 'Direct Client Contact Engine, 8s Toast Auto-Disappear & Error State Button',
+    date: 'September 04, 2026',
+    desc: 'Upgraded portfolio contact infrastructure with direct client-side submission, 8-second auto-disappearing Emerald Success & Rose Error toast notifications, dynamic Rose Red Delivery Failed button state, and secret hygiene.',
+    tags: ['Client Contact Engine', '8s Toast Auto-Dismiss', 'Rose Error Button', 'Realistic Error Text'],
+    link: '/changelog'
   },
   {
     id: '002',

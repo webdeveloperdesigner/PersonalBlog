@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Sparkles, X, ArrowUp, Copy, Check, Mail, Clock, Bot
+  Sparkles, X, ArrowUp, Copy, Check, Mail, Clock, Bot, GitBranch
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -34,6 +34,10 @@ export default function Footer() {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [timeString, setTimeString] = useState<string>('');
+  
+  // Auto-hide Close Button state
+  const [isCloseBtnVisible, setIsCloseBtnVisible] = useState(true);
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const email = "vivekxdev01@gmail.com";
 
@@ -43,6 +47,19 @@ export default function Footer() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Lock background scroll when overlay is open
+  useEffect(() => {
+    if (isMoreOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMoreOpen]);
+
+  // Live IST Clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -60,6 +77,30 @@ export default function Footer() {
     return () => clearInterval(timer);
   }, []);
 
+  // Idle Detection for Auto-Hiding Close Button
+  useEffect(() => {
+    if (!isMoreOpen) return;
+
+    const resetIdleTimer = () => {
+      setIsCloseBtnVisible(true);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => {
+        setIsCloseBtnVisible(false);
+      }, 2500);
+    };
+
+    resetIdleTimer();
+
+    const activityEvents = ['mousemove', 'touchstart', 'touchmove', 'scroll', 'keydown'];
+    activityEvents.forEach(evt => window.addEventListener(evt, resetIdleTimer));
+
+    return () => {
+      activityEvents.forEach(evt => window.removeEventListener(evt, resetIdleTimer));
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [isMoreOpen]);
+
+  // GSAP Wordmark Animation
   useEffect(() => {
     if (!wordmarkRef.current) return;
     gsap.fromTo(
@@ -85,7 +126,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-background relative overflow-hidden pt-20 border-t border-foreground/10">
+      <footer className="bg-background text-foreground relative overflow-hidden pt-20 border-t border-foreground/10">
         
         {/* Marquee Strip */}
         <div className="w-full overflow-hidden border-y border-foreground/10 py-4 bg-primary">
@@ -133,7 +174,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Full-Screen Overlay Modal */}
+      {/* Full-Screen Sr. SDE Grade Dual Theme Overlay Modal */}
       <AnimatePresence>
         {isMoreOpen && (
           <motion.div 
@@ -141,14 +182,14 @@ export default function Footer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-black text-white flex flex-col justify-between overflow-y-auto selection:bg-[#FF7029]/40"
+            className="fixed inset-0 z-[100] bg-white dark:bg-[#09090b] text-neutral-900 dark:text-white flex flex-col justify-between overflow-y-auto selection:bg-[#FF7029]/40"
           >
-            {/* Top Bar with Marquee & Close Button */}
-            <div className="relative border-b border-white/10 py-5 flex items-center justify-between">
+            {/* Top Sticky Bar with Marquee & Auto-Hiding Close Button */}
+            <div className="sticky top-0 z-30 bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-md border-b border-black/10 dark:border-white/10 py-5 flex items-center justify-between">
               
               {/* Top Marquee */}
               <div className="w-full overflow-hidden mr-16">
-                <div className="flex whitespace-nowrap animate-marquee font-mono text-xs text-white/50 tracking-widest uppercase font-semibold">
+                <div className="flex whitespace-nowrap animate-marquee font-mono text-xs text-neutral-500 dark:text-white/50 tracking-widest uppercase font-semibold">
                   {[...Array(4)].map((_, i) => (
                     <span key={i} className="px-6">
                       BACKEND ARCHITECTURE • UI/UX DESIGN • CREATIVE CODING • SYSTEM OPTIMIZATION • OPEN TO OPPORTUNITIES •
@@ -157,14 +198,16 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Close Button */}
+              {/* Smart Auto-Hiding Close Button */}
               <button 
                 suppressHydrationWarning
                 onClick={() => setIsMoreOpen(false)}
-                className="absolute right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-white/20 hover:border-white/50 bg-white/5 hover:bg-white/15 flex items-center justify-center transition-all cursor-pointer z-20"
+                className={`absolute right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full border border-black/15 dark:border-white/20 hover:border-black/40 dark:hover:border-white/50 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/15 text-neutral-900 dark:text-white flex items-center justify-center transition-all duration-500 cursor-pointer z-20 ${
+                  isCloseBtnVisible ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-90'
+                }`}
                 aria-label="Close Overlay"
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -173,10 +216,10 @@ export default function Footer() {
               
               {/* Left Column: Let's Work Together */}
               <div className="flex flex-col items-start max-w-xl text-left">
-                <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl text-white tracking-tight leading-[0.95] mb-6 uppercase">
+                <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl text-neutral-950 dark:text-white tracking-tight leading-[0.95] mb-6 uppercase">
                   Let's Work<br />Together
                 </h1>
-                <p className="font-sans text-white/70 text-base sm:text-lg leading-relaxed mb-8">
+                <p className="font-sans text-neutral-700 dark:text-white/70 text-base sm:text-lg leading-relaxed mb-8">
                   Have a project in mind? Let's build something extraordinary that solves real problems.
                 </p>
 
@@ -184,21 +227,16 @@ export default function Footer() {
                 <button
                   suppressHydrationWarning
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/10 border border-white/20 hover:border-[#FF7029] hover:bg-white/15 transition-all text-sm font-mono font-medium text-white cursor-pointer group shadow-lg"
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-black/[0.04] dark:bg-white/10 border border-black/15 dark:border-white/20 hover:border-[#FF7029] hover:bg-black/[0.08] dark:hover:bg-white/15 transition-all text-sm font-mono font-medium text-neutral-900 dark:text-white cursor-pointer group shadow-lg"
                 >
                   <Mail className="w-4 h-4 text-[#FF7029]" />
                   <span>{email}</span>
                   {copied ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   ) : (
-                    <Copy className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
+                    <Copy className="w-4 h-4 text-neutral-500 dark:text-white/50 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors" />
                   )}
                 </button>
-                {copied && (
-                  <span className="font-mono text-xs text-emerald-400 mt-2 font-bold animate-pulse">
-                    Email copied to clipboard!
-                  </span>
-                )}
               </div>
 
               {/* Right Column: 3x2 Grid */}
@@ -206,19 +244,19 @@ export default function Footer() {
                 {[
                   {
                     name: 'GitHub',
-                    icon: <GithubIcon className="w-6 h-6 text-white" />,
+                    icon: <GithubIcon className="w-6 h-6 text-neutral-900 dark:text-white" />,
                     href: 'https://github.com/webdeveloperdesigner',
                     external: true
                   },
                   {
                     name: 'LinkedIn',
-                    icon: <LinkedinIcon className="w-6 h-6 text-white" />,
+                    icon: <LinkedinIcon className="w-6 h-6 text-neutral-900 dark:text-white" />,
                     href: 'https://linkedin.com/in/vivek-vns/',
                     external: true
                   },
                   {
                     name: 'Instagram',
-                    icon: <InstagramIcon className="w-6 h-6 text-white" />,
+                    icon: <InstagramIcon className="w-6 h-6 text-neutral-900 dark:text-white" />,
                     href: 'https://instagram.com/_.heyiamvivek._',
                     external: true
                   },
@@ -232,10 +270,26 @@ export default function Footer() {
                   },
                   {
                     name: 'AI Chat',
-                    icon: <Bot className="w-6 h-6 text-purple-400 animate-bounce" />,
+                    icon: (
+                      <div className="relative flex items-center justify-center w-7 h-7">
+                        <Bot className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-3 h-3 text-amber-500 dark:text-amber-300 absolute -top-1 -left-1 animate-pulse" />
+                        <span className="absolute -bottom-1 -right-2 px-1 py-0.2 bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-500 dark:to-indigo-500 text-[8px] font-mono font-black text-white rounded-md tracking-tighter border border-purple-300/40 shadow-sm leading-tight">
+                          AI
+                        </span>
+                      </div>
+                    ),
                     href: '#',
                     external: false,
-                    badge: 'SOON'
+                    badge: 'COMING SOON'
+                  },
+                  {
+                    isVersion: true,
+                    name: 'v2.8.1',
+                    subText: '2026 © EDITION',
+                    icon: <GitBranch className="w-6 h-6 text-[#FF7029]" />,
+                    href: '/version',
+                    external: false
                   }
                 ].map((item) => {
                   if (item.external) {
@@ -245,50 +299,110 @@ export default function Footer() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#FF7029]/60 hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 hover:border-[#FF7029]/60 hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
                       >
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                           {item.icon}
                         </div>
-                        <span className="font-sans font-bold text-sm text-white/80 group-hover:text-white transition-colors">
+                        <span className="font-sans font-bold text-sm text-neutral-800 dark:text-white/80 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors">
                           {item.name}
                         </span>
                       </a>
                     );
                   } else if (item.isTime) {
                     return (
-                      <Link
+                      <div
                         key="live-time-card"
+                        className="relative flex flex-col items-start justify-center p-6 rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-[#FF7029]/40 hover:border-[#FF7029] dark:border-[#FF7029]/40 dark:hover:border-[#FF7029] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md hover:shadow-lg hover:shadow-[#FF7029]/10 text-left select-none"
+                      >
+                        {/* Top Right Live Dot Badge Pill with Smooth Fade & Scale Animation */}
+                        <span className="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 inline-flex items-center gap-1.5 absolute top-3 right-3 font-mono text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-[#FF7029]/10 text-[#FF7029] border border-[#FF7029]/30 tracking-wider whitespace-nowrap transition-all duration-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#FF7029] animate-pulse" />
+                          LIVE
+                        </span>
+
+                        {/* Header */}
+                        <span className="font-mono text-xs font-semibold text-neutral-500 dark:text-white/50 tracking-widest uppercase mb-3 pr-14 block">
+                          LOCAL TIME
+                        </span>
+                        
+                        {/* Animated Text Container */}
+                        <div className="relative w-full">
+                          {/* Normal State Text */}
+                          <span className="block font-sans font-bold text-base sm:text-lg text-neutral-900 dark:text-white tracking-tight leading-snug group-hover:opacity-0 group-hover:-translate-y-1.5 transition-all duration-300 pointer-events-none">
+                            Varanasi, India
+                          </span>
+
+                          {/* Hover/Touch State Text */}
+                          <span suppressHydrationWarning className="absolute inset-0 font-mono font-extrabold text-xs sm:text-sm text-[#FF7029] tracking-wider leading-snug opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center">
+                            {timeString ? `${timeString} UTC+5:30` : '07:30 PM UTC+5:30'}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  } else if (item.isVersion) {
+                    const currentYear = new Date().getFullYear();
+                    const currentQuarter = `Q${Math.floor(new Date().getMonth() / 3) + 1}`;
+                    return (
+                      <Link
+                        key="version-edition-card"
                         href={item.href}
                         onClick={() => setIsMoreOpen(false)}
-                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-[#FF7029]/30 hover:border-[#FF7029] hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                        className="relative flex flex-col items-start justify-center p-6 rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-[#FF7029]/40 hover:border-[#FF7029] dark:border-[#FF7029]/40 dark:hover:border-[#FF7029] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md hover:shadow-lg hover:shadow-[#FF7029]/10 text-left"
                       >
-                        <div className="w-14 h-14 rounded-2xl bg-[#FF7029]/10 border border-[#FF7029]/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                          {item.icon}
+                        {/* Top Right Badge Pill with Smooth Fade & Scale Animation */}
+                        <span className="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 inline-flex items-center absolute top-3 right-3 font-mono text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-[#FF7029]/10 text-[#FF7029] border border-[#FF7029]/30 tracking-wider whitespace-nowrap transition-all duration-300">
+                          v2.8.1 ↗
+                        </span>
+
+                        {/* Header */}
+                        <span className="font-mono text-xs font-semibold text-neutral-500 dark:text-white/50 tracking-widest uppercase mb-3 pr-14 block">
+                          VERSION
+                        </span>
+                        
+                        {/* Animated Text Container */}
+                        <div className="relative w-full">
+                          {/* Normal State Text */}
+                          <span className="block font-sans font-bold text-base sm:text-lg text-neutral-900 dark:text-white tracking-tight leading-snug group-hover:opacity-0 group-hover:-translate-y-1.5 transition-all duration-300 pointer-events-none">
+                            {currentYear} © Edition
+                          </span>
+
+                          {/* Hover/Touch State Text */}
+                          <span suppressHydrationWarning className="absolute inset-0 font-sans font-bold text-base sm:text-lg text-[#FF7029] tracking-tight leading-snug opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                            {currentYear} © Edition {currentQuarter}
+                          </span>
                         </div>
-                        <span suppressHydrationWarning className="font-mono font-extrabold text-xs text-white group-hover:text-[#FF7029] transition-colors tracking-wider">
-                          {item.name}
-                        </span>
-                        <span className="font-mono text-[9px] font-bold text-[#FF7029] tracking-widest mt-0.5">
-                          {item.subText}
-                        </span>
                       </Link>
                     );
-                  } else if (item.badge === 'SOON') {
+                  } else if (item.badge === 'COMING SOON') {
                     return (
                       <div
                         key={item.name}
-                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.03] border border-purple-500/30 opacity-90 transition-all text-center select-none"
+                        className="relative flex flex-col items-start justify-center p-6 rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-purple-500/40 hover:border-purple-500 dark:border-purple-500/40 dark:hover:border-purple-500 hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md hover:shadow-lg hover:shadow-purple-500/10 text-left select-none"
                       >
-                        <span className="absolute top-3 right-3 font-mono text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 tracking-wider">
-                          SOON
+                        {/* Top Right AI Bot Badge Pill with Smooth Fade & Scale Animation */}
+                        <span className="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 inline-flex items-center gap-1.5 absolute top-3 right-3 font-mono text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 border border-purple-500/40 tracking-wider whitespace-nowrap transition-all duration-300">
+                          <span>AI BOT</span>
+                          <Bot className="w-3 h-3 text-purple-600 dark:text-purple-300" />
                         </span>
-                        <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-3">
-                          {item.icon}
+
+                        {/* Header */}
+                        <span className="font-mono text-xs font-semibold text-neutral-500 dark:text-white/50 tracking-widest uppercase mb-3 pr-14 block">
+                          AI CHAT
+                        </span>
+                        
+                        {/* Animated Text Container */}
+                        <div className="relative w-full">
+                          {/* Normal State Text */}
+                          <span className="block font-sans font-bold text-base sm:text-lg text-neutral-900 dark:text-white tracking-tight leading-snug group-hover:opacity-0 group-hover:-translate-y-1.5 transition-all duration-300 pointer-events-none">
+                            Smart Assistant
+                          </span>
+
+                          {/* Hover/Touch State Text */}
+                          <span className="absolute inset-0 font-mono font-extrabold text-sm sm:text-base text-purple-600 dark:text-purple-400 tracking-wider leading-snug opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center">
+                            COMING SOON ✦
+                          </span>
                         </div>
-                        <span className="font-sans font-bold text-sm text-purple-200">
-                          {item.name}
-                        </span>
                       </div>
                     );
                   } else {
@@ -297,12 +411,12 @@ export default function Footer() {
                         key={item.name}
                         href={item.href}
                         onClick={() => setIsMoreOpen(false)}
-                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#FF7029]/60 hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
+                        className="relative flex flex-col items-center justify-center p-6 rounded-3xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 hover:border-[#FF7029]/60 hover:bg-black/[0.06] dark:hover:bg-white/[0.08] transition-all group cursor-pointer shadow-md text-center"
                       >
-                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                           {item.icon}
                         </div>
-                        <span className="font-sans font-bold text-sm text-white/80 group-hover:text-white transition-colors">
+                        <span className="font-sans font-bold text-sm text-neutral-800 dark:text-white/80 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors">
                           {item.name}
                         </span>
                       </Link>
@@ -314,20 +428,36 @@ export default function Footer() {
             </div>
 
             {/* Bottom Footer Controls */}
-            <div className="container mx-auto px-8 md:px-16 py-6 border-t border-white/10 flex items-center justify-between font-mono text-xs text-white/40">
+            <div className="container mx-auto px-8 md:px-16 py-6 border-t border-black/10 dark:border-white/10 flex items-center justify-between font-mono text-xs text-neutral-500 dark:text-white/40">
               <span>Vivek Portfolio Engine</span>
 
               {/* Scroll To Top Button */}
               <button 
                 suppressHydrationWarning
                 onClick={scrollToTop}
-                className="w-12 h-12 rounded-full bg-white text-black hover:bg-[#FF7029] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-xl group"
+                className="w-12 h-12 rounded-full bg-neutral-950 dark:bg-white text-white dark:text-black hover:bg-[#FF7029] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-xl group"
                 aria-label="Back to Top"
               >
                 <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </div>
 
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Animated Toast Notification */}
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.9, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, scale: 0.9, x: '-50%' }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            className="fixed bottom-10 left-1/2 z-[200] px-5 py-3 rounded-full bg-emerald-500 text-white font-mono text-xs font-bold flex items-center gap-2.5 shadow-2xl border border-emerald-400/50 backdrop-blur-xl tracking-wider uppercase select-none"
+          >
+            <Check className="w-4 h-4 text-white stroke-[3]" />
+            <span>Email copied to clipboard!</span>
           </motion.div>
         )}
       </AnimatePresence>

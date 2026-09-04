@@ -99,12 +99,12 @@ export default function VersionPage() {
             </p>
           </div>
 
-          {/* Current Version Executive Dashboard (Strict 2.8.0 Spec) */}
+          {/* Current Version Executive Dashboard (Strict 2.8.2 Spec) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
               <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">CURRENT VERSION</span>
-              <span className="font-display font-extrabold text-3xl text-[#FF7029] block mb-1">v2.8.0</span>
-              <span className="font-mono text-xs text-foreground/60 block">Semantic Release Generation</span>
+              <span className="font-display font-extrabold text-3xl text-[#FF7029] block mb-1">v2.8.2</span>
+              <span className="font-mono text-xs text-foreground/60 block">Semantic Release Patch</span>
             </div>
 
             <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
@@ -113,13 +113,13 @@ export default function VersionPage() {
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="font-display font-extrabold text-2xl text-emerald-400">STABLE</span>
               </div>
-              <span className="font-mono text-xs text-foreground/60 block">Released 31 Aug 2026</span>
+              <span className="font-mono text-xs text-foreground/60 block">Released 04 Sep 2026</span>
             </div>
 
             <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">
-              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">PATCH STREAM</span>
+              <span className="font-mono text-xs text-foreground/50 uppercase tracking-widest block mb-2 font-semibold">PREVIOUS PATCH</span>
               <span className="font-display font-extrabold text-2xl text-foreground block mb-1">v2.8.1</span>
-              <span className="font-mono text-xs text-foreground/60 block">Deployed 02 Sep 2026</span>
+              <span className="font-mono text-xs text-foreground/60 block">Deployed 03 Sep 2026</span>
             </div>
 
             <div className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10">

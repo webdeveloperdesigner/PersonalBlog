@@ -26,13 +26,66 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [key]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
-    setTimeout(() => {
-      setFormStatus('success');
-      setShowToast(true);
-    }, 1000);
+    setErrorMessage('');
+
+    try {
+      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+      if (!apiKey) {
+        setFormStatus('idle');
+        setErrorMessage('Form configuration missing. Please reach out directly via email at vivekxdev01@gmail.com.');
+        return;
+      }
+      
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          from_name: 'Vivek Portfolio System',
+          subject: `⚡ Portfolio Inquiry from ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          replyto: formData.email,
+          company: formData.company || 'Not specified',
+          message: formData.message
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setFormStatus('success');
+        setShowToast(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+
+        setTimeout(() => {
+          setShowToast(false);
+          setFormStatus('idle');
+        }, 8000);
+      } else {
+        setFormStatus('idle');
+        const msg = data.message || 'The contact form is temporarily unavailable. Please reach out directly via email at vivekxdev01@gmail.com.';
+        setErrorMessage(msg);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 8000);
+      }
+    } catch (err) {
+      setFormStatus('idle');
+      setErrorMessage('Unable to send message at the moment. Please reach out directly via email at vivekxdev01@gmail.com.');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 8000);
+    }
   };
 
   return (
@@ -145,8 +198,8 @@ export default function Contact() {
               </div>
 
               <div className="pt-4">
-                <MagneticButton className="w-full md:w-auto bg-[#FF7029] hover:bg-[#E65F1E] text-white font-black text-xs px-8 py-3.5 rounded-full uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#FF7029]/30">
-                  <span className="text-white font-bold">{formStatus === 'idle' ? 'Send Message ↗' : formStatus === 'submitting' ? 'Processing...' : 'Form Updating ↗'}</span>
+                <MagneticButton className={`w-full md:w-auto font-black text-xs px-8 py-3.5 rounded-full uppercase tracking-wider transition-all duration-300 shadow-md ${formStatus === 'success' ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20' : errorMessage ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-rose-500/20' : 'bg-[#FF7029] hover:bg-[#E65F1E] text-white hover:shadow-lg hover:shadow-[#FF7029]/30'}`}>
+                  <span className="text-white font-bold">{formStatus === 'submitting' ? 'Sending Message...' : formStatus === 'success' ? 'Message Sent! ✓' : errorMessage ? 'Delivery Failed ✕' : 'Send Message ↗'}</span>
                 </MagneticButton>
               </div>
             </form>
@@ -190,7 +243,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Interactive Toast Notification */}
+      {/* Sr. SDE Emerald Success Toast Notification */}
       <AnimatePresence>
         {showToast && (
           <motion.div
@@ -198,12 +251,12 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-8 sm:max-w-md z-[999] bg-white dark:bg-[#121212] border border-black/15 dark:border-white/15 rounded-2xl shadow-2xl p-5 sm:p-6 flex flex-col gap-4 font-mono text-xs"
+            className="fixed bottom-6 left-4 right-4 sm:left-auto sm:right-8 sm:max-w-md z-[999] bg-white dark:bg-[#121212] border border-emerald-500/30 dark:border-emerald-500/40 rounded-2xl shadow-2xl p-5 sm:p-6 flex flex-col gap-3 font-mono text-xs"
           >
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-center gap-2 text-[#FF7029] font-bold text-sm">
-                <AlertCircle className="w-5 h-5 text-[#FF7029] shrink-0 animate-pulse" />
-                <span>Form Service Notice</span>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                <span>Message Delivered! ✦</span>
               </div>
               <button
                 suppressHydrationWarning
@@ -215,25 +268,57 @@ export default function Contact() {
             </div>
 
             <p className="font-sans text-xs text-foreground/80 leading-relaxed font-medium">
-              The automated contact form is currently undergoing live service updates. Please reach out directly via email or WhatsApp below for an instant response:
+              Your inquiry has been delivered directly to Vivek's inbox. I will review your message and get back to you shortly!
             </p>
 
-            <div className="flex flex-col gap-2 pt-2 border-t border-black/10 dark:border-white/10 font-mono text-[11px]">
+            <div className="flex items-center gap-3 pt-2 border-t border-black/10 dark:border-white/10 font-mono text-[11px]">
               <a 
                 href="mailto:vivekxdev01@gmail.com" 
-                className="flex items-center gap-2 text-[#FF7029] hover:underline font-bold"
+                className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:underline font-bold"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>vivekxdev01@gmail.com</span>
               </a>
-              <a 
-                href="https://wa.me/918765728985" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-2 text-emerald-500 hover:underline font-bold"
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Sr. SDE Rose Error Toast Notification */}
+      <AnimatePresence>
+        {errorMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-6 left-4 right-4 sm:left-auto sm:right-8 sm:max-w-md z-[999] bg-white dark:bg-[#121212] border border-rose-500/30 dark:border-rose-500/40 rounded-2xl shadow-2xl p-5 sm:p-6 flex flex-col gap-3 font-mono text-xs"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 text-rose-600 dark:text-rose-400 font-bold text-sm">
+                <AlertCircle className="w-5 h-5 text-rose-500 shrink-0" />
+                <span>Delivery Error ✦</span>
+              </div>
+              <button
+                suppressHydrationWarning
+                onClick={() => setErrorMessage('')}
+                className="text-foreground/50 hover:text-foreground p-1 transition-colors cursor-pointer rounded-full hover:bg-foreground/10"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>WhatsApp: +91 8765728985</span>
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <p className="font-sans text-xs text-foreground/80 leading-relaxed font-medium">
+              {errorMessage}
+            </p>
+
+            <div className="flex items-center gap-3 pt-2 border-t border-black/10 dark:border-white/10 font-mono text-[11px]">
+              <a 
+                href="mailto:vivekxdev01@gmail.com" 
+                className="inline-flex items-center gap-1.5 text-rose-600 dark:text-rose-400 hover:underline font-bold"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Direct Email: vivekxdev01@gmail.com</span>
               </a>
             </div>
           </motion.div>

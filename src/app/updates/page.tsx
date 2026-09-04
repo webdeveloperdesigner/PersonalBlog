@@ -11,22 +11,22 @@ import {
 
 const systemUpdates = [
   {
-    id: 'UPD-2026-0902-1',
-    version: 'v2.8.1',
-    date: '02 SEP 2026',
-    tag: 'LIVE PATCH',
+    id: 'UPD-2026-0904',
+    version: 'v2.8.2',
+    date: '04 SEP 2026',
+    tag: 'PATCH',
     tagColor: 'bg-emerald-500 text-white',
-    title: 'v2.8.1 Deployed: Chrome Autofill Defeat & Hydration Suppression Patch',
-    summary: 'Deployed patch v2.8.1 addressing Chromium Incognito autofill style overrides, input field label class specificity conflicts, and browser extension hydration warning suppression on footer buttons.',
+    title: 'Direct Client Contact Integration, 8s Toast Auto-Disappear & Error Button State',
+    summary: 'Deployed v2.8.2 patch upgrading contact infrastructure to direct client-side submission, 8-second auto-disappearing toasts, dynamic Rose Red delivery failed button state, and secret hygiene.',
     details: [
-      'Engineered Chrome Incognito autofill trap inputs (fake_username & fake_password) trapping automatic browser heuristics',
-      'Obfuscated form field IDs (contact_field_email) to defeat Chrome desktop email fill while keeping mobile inputMode="email"',
-      'Added global CSS -webkit-autofill transition-delay overrides preventing yellow/white background fills',
-      'Resolved label class specificity conflicts by unifying peer-focus and peer-[:not(:placeholder-shown)] modifiers',
-      'Added suppressHydrationWarning to interactive footer buttons and dynamic copyright year'
+      'Migrated contact form submission directly to client-side API using environment variables',
+      'Configured 8-second (8000ms) auto-disappear timers for both Emerald Success and Rose Error toasts',
+      'Engineered dynamic Rose Red button styling (bg-rose-600) and Delivery Failed ✕ text on failure',
+      'Replaced unnatural "high volume" messaging with realistic developer contact fallbacks',
+      'Purged all hardcoded string API keys from source files for strict environment variable isolation'
     ],
     links: [
-      { label: 'View Contact Section', href: '/#contact' },
+      { label: 'View Changelog', href: '/changelog' },
       { label: 'View Version Specs', href: '/version' }
     ]
   },

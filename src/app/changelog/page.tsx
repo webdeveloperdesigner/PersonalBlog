@@ -37,6 +37,24 @@ interface Release {
 
 const releasesData: Release[] = [
   {
+    version: 'v2.8.2',
+    date: '04 SEP 2026',
+    year: '2026',
+    statusBadge: 'LIVE PATCH',
+    badgeColor: 'bg-emerald-500 text-white',
+    title: 'Direct Client Contact Engine, 8s Toast Auto-Disappear & Rose Error Button State',
+    summary: 'Upgraded portfolio contact form infrastructure with direct client-side submission, 8-second auto-disappearing Emerald Success & Rose Error toast notifications, dynamic Rose Red Delivery Failed button state, realistic developer error fallbacks, and strict environment variable secret isolation.',
+    tags: ['FEATURE', 'FIX', 'UX', 'ARCHITECTURE'],
+    commitUrl: 'https://github.com/webdeveloperdesigner/PersonalBlog/commits/main',
+    changes: [
+      { id: '01', title: 'Client-Side Direct Contact Submission API', category: 'ARCHITECTURE', desc: 'Migrated contact submission directly to client API using environment variables, bypassing server-side Cloudflare IP blocks.' },
+      { id: '02', title: 'Smart 8s Auto-Disappearing Toast Engine', category: 'UX', desc: 'Configured 8-second (8000ms) auto-dismiss timers for both Emerald Success (Message Delivered! ✦) and Rose Error (Delivery Error ✦) notifications.' },
+      { id: '03', title: 'Dynamic Rose Error Button State Indicator', category: 'UX', desc: 'Engineered bg-rose-600 button styling and Delivery Failed ✕ button label state on form submission error.' },
+      { id: '04', title: 'Realistic Developer Fallback Messaging', category: 'FIX', desc: 'Replaced unnatural high volume text with realistic, developer-appropriate error messaging featuring direct vivekxdev01@gmail.com contact links.' },
+      { id: '05', title: 'Source Code Secret Hygiene Isolation', category: 'ARCHITECTURE', desc: 'Purged all hardcoded string API key fallbacks in client code to enforce 100% environment variable isolation.' }
+    ]
+  },
+  {
     version: 'v2.8.1',
     date: '02 SEP 2026',
     year: '2026',

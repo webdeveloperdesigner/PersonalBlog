@@ -6,9 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [v2.8.2] - 2026-09-04 (Contact Engine & Toast Notification Suite)
+
+### 🌟 Added & Refined
+
+- **Direct Client Contact API Integration (`Contact.tsx`)**: Refactored contact form to submit directly from client browser using environment variables, eliminating server-side IP restriction blocks.
+- **Smart 8s Auto-Disappearing Toasts (`Contact.tsx`)**: Configured automatic 8-second (`8000ms`) auto-dismiss timer for both Emerald Success (`Message Delivered! ✦`) and Rose Error (`Delivery Error ✦`) toast notifications.
+- **Dynamic Rose Error Button State (`Contact.tsx`)**: Added `bg-rose-600` styling and `Delivery Failed ✕` button state indicator on submission failure.
+- **Realistic Error Messaging (`route.ts` & `Contact.tsx`)**: Replaced unnatural "high volume" text with realistic, developer-appropriate messaging featuring direct `vivekxdev01@gmail.com` contact fallback options.
+- **Security & Secret Hygiene (`Contact.tsx`)**: Purged hardcoded API key fallbacks in source code to ensure 100% environment variable isolation.
+
+---
+
 ## [v2.5.0] - 2026-08-23 (Executive Release Suite)
 
 ### 🌟 Added & Refined
+
 - **Executive Experience Timeline Architecture (`ExperienceSkills.tsx`):** Implemented exact ASCII schematic layout for MotionCut, Digihero, and BodhAI cards with 100% full-width single-line titles and direct verification certificate links.
 - **Full-Site Smooth Anchor Scroll Engine (`Navbar.tsx` & `globals.css`):** Configured global smooth scrolling with interceptors routing `/#hero`, `/#about`, `/#experience`, `/#projects`, and `/#blog` seamlessly.
 - **GitHub-Style Engineering Release Log (`/changelog`):** Redesigned `/changelog` with structured change cards, collapsible open/close details, metric badges, releases index sidebar, and direct GitHub commit links.
@@ -21,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v2.4.0] - 2026-08-22 (Latest Major Enhancement Suite)
 
 ### 🌟 Added
+
 - **6.0 Explore Dropdown Navigation:** Integrated a floating desktop navigation pill (`6.0 EXPLORE ▾`) with Framer Motion animations and an interactive mobile drawer accordion featuring quick links to Case Studies, Gallery, Timeline, About Presentation, and Projects Archive.
 - **Featured Homepage Blog Section (`WritingsSection.tsx`):** Mounted a high-contrast blog cards grid (04 / BLOG & WRITINGS) directly before the Contact section on the homepage.
 - **Interactive Changelog Page (`/changelog`):** Built a dedicated version history route documenting release notes, system metrics, version quick-jump pills, and feature evolution.
@@ -28,6 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Executive README Documentation:** Created a badge-rich technical `README.md` featuring Shields badges, system architecture, and local development instructions.
 
 ### 🎨 Fixed & Refined
+
 - **Theme Adaptability (Light & Dark Mode):** Configured Tailwind CSS v4 `@custom-variant dark (&:where(.dark, .dark *));` for 100% theme synchronization across all 17 static and dynamic routes.
 - **Form Label Collision:** Resolved label/placeholder text overlap in `Contact.tsx` using `placeholder-transparent` and `peer-[:not(:placeholder-shown)]:-top-3`.
 - **Button Contrast:** Set explicit `text-white font-bold` on all primary orange (`#FF7029`) buttons (`Navbar`, `Contact`, `Services`, `Hero`).
@@ -40,6 +55,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v2.3.0] - 2026-08-18 (Interactive Cursor & Pitch Deck)
 
 ### 🚀 Added
+
 - **Spring Cursor Physics:** Dual-ring custom mouse cursor with Framer Motion spring physics and interactive element scaling.
 - **Pitch Deck Light/Dark Themes:** Converted `/me` presentation cards to support clean theme switching.
 
@@ -48,6 +64,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v2.2.0] - 2026-08-12 (3D Gyroscope & Submenu Systems)
 
 ### 🛠️ Added
+
 - **TiltCard 3D Gyroscope Spotlight:** Hardware-accelerated mouse position spotlight sheen and perspective tilt.
 - **Explore Submenu Architecture:** Modular submenus for Case Studies, Gallery, Timeline, About, and Archive.
 
@@ -56,6 +73,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v2.1.0] - 2026-08-05 (Theme Engine & Design Tokens)
 
 ### 🎨 Added
+
 - **next-themes Provider:** Persistent theme provider supporting system preferences and local storage.
 - **Glassmorphism Design Systems:** HSL tailored colors, subtle micro-animations, and glass card borders.
 
@@ -64,6 +82,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v2.0.0] - 2026-08-01 (Next.js 16 & React 19 Upgrade)
 
 ### 🚀 Added
+
 - **Framework Upgrade:** Migrated core application framework to Next.js 16 (App Router & Turbopack) and React 19.
 - **Tailwind CSS v4 Integration:** Upgraded styling directives to Tailwind CSS v4.
 - **Interactive Pitch Deck (`/me`):** Created a keyboard (`↑` / `↓`) and mouse wheel driven presentation deck.
@@ -76,6 +95,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v1.5.0] - 2026-05-14 (Experience & Filter Expansion)
 
 ### 📈 Added
+
 - **Experience Timeline Tracks:** Career track milestone component showcasing professional growth.
 - **Project Filter System:** Category tab filtering across AI, Full Stack, and Mobile project archives.
 
@@ -84,5 +104,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [v1.0.0] - 2026-01-10 (Initial Release)
 
 ### 📦 Initial Features
+
 - Core portfolio landing page with Hero section, Projects showcase, Disciplines, and Contact form.
 - Initial Dark Mode UI design system.
